@@ -137,14 +137,16 @@ function Todos() {
           />
           <button type="submit">Update item</button>
         </form>
-        {mutationLoading && <p>Loading...</p>}
-        {mutationError && <p>Error: {mutationError.message}</p>}
       </li>
     );
   });
 
   return (
-    <ul>{todos}</ul>
+    <div>
+      <ul>{todos}</ul>
+      {mutationLoading && <p>Loading...</p>}
+      {mutationError && <p>Error: {mutationError.message}</p>}
+    </div>
   );  
 }
 
