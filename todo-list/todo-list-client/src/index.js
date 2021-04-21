@@ -61,7 +61,19 @@ function AddTodo() {
       <form
         onSubmit={e => {
           e.preventDefault();
-          addTodo({ variables: { description: input.value } });
+          addTodo({
+            variables: { description: input.value },
+
+            // Optimistically add the Todo to the locally cached
+            // list before the server responds
+            optimisticResponse: {
+              addTodo: {
+                id: 'temp-id',
+                __typename: "Todo",
+                description: input.value
+              }
+            }
+          });
           input.value = "";
         }}
       >
@@ -115,7 +127,6 @@ function Todos() {
           onSubmit={e => {
             e.preventDefault();
             updateTodo({ variables: { id, description: input.value } });
-
             input.value = "";
           }}
         >
