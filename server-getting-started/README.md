@@ -11,6 +11,6 @@ yarn start
 
 ## Run in CodeSandbox
 
-<a href="https://codesandbox.io/s/github/apollographql/docs-examples/tree/main/server-getting-started?fontsize=14&hidenavigation=1&theme=dark">
+<a href="https://codesandbox.io/s/github/apollographql/docs-examples/tree/main/server-getting-started">
   <img alt="Edit server-getting-started" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
