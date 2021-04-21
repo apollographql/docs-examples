@@ -11,7 +11,7 @@ import {
 
 // If running locally with a local version of the to-do server,
 // change this URL to http://localhost:4000
-const serverURL = 'https://sxewr.sse.codesandbox.io/';
+const serverURL = 'https://upscs.sse.codesandbox.io/';
 
 const client = new ApolloClient({
   uri: serverURL,
@@ -19,10 +19,10 @@ const client = new ApolloClient({
 });
 
 const ADD_TODO = gql`
-  mutation AddTodo($type: String!) {
-    addTodo(type: $type) {
+  mutation AddTodo($description: String!) {
+    addTodo(description: $description) {
       id
-      type
+      description
     }
   }
 `;
@@ -45,7 +45,7 @@ function AddTodo() {
               fragment: gql`
                 fragment NewTodo on Todo {
                   id
-                  type
+                  description
                 }
               `
             });
@@ -61,7 +61,7 @@ function AddTodo() {
       <form
         onSubmit={e => {
           e.preventDefault();
-          addTodo({ variables: { type: input.value } });
+          addTodo({ variables: { description: input.value } });
           input.value = "";
         }}
       >
@@ -80,16 +80,16 @@ const GET_TODOS = gql`
   {
     todos {
       id
-      type
+      description
     }
   }
 `;
 
 const UPDATE_TODO = gql`
-  mutation UpdateTodo($id: String!, $type: String!) {
-    updateTodo(id: $id, type: $type) {
+  mutation UpdateTodo($id: String!, $description: String!) {
+    updateTodo(id: $id, description: $description) {
       id
-      type
+      description
     }
   }
 `;
@@ -105,16 +105,16 @@ function Todos() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  const todos = data.todos.map(({ id, type }) => {
+  const todos = data.todos.map(({ id, description }) => {
     let input;
 
     return (
       <li key={id}>
-        <p>{type}</p>
+        <p>{description}</p>
         <form
           onSubmit={e => {
             e.preventDefault();
-            updateTodo({ variables: { id, type: input.value } });
+            updateTodo({ variables: { id, description: input.value } });
 
             input.value = "";
           }}
