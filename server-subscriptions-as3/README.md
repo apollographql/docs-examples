@@ -6,6 +6,12 @@ The example server exposes one subscription (`numberIncremented`) that returns a
 
 After you start up this server, you can test out running a subscription with the Apollo Studio Explorer or GraphQL Playground. You'll see the subscription's value update every second.
 
+```graphql
+subscription IncrementingNumber {
+  numberIncremented
+}
+```
+
 ## Run locally
 
 ```shell
@@ -15,6 +21,6 @@ yarn start
 
 ## Run in CodeSandbox
 
-<a href="https://codesandbox.io/s/github/apollographql/docs-examples/tree/main/server-subscriptions-as3?fontsize=14&hidenavigation=1&theme=dark">
+<a href="https://codesandbox.io/s/github/apollographql/docs-examples/tree/main/server-subscriptions-as3?initialpath=/graphql">
   <img alt="Edit server-subscriptions-as3" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
