@@ -174,10 +174,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/graphql@14.0.1":
-  version "14.0.1"
-  resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-14.0.1.tgz#ff44c20fefdf0cf8c390f64b0dfbbc3c10dbaa87"
-  integrity sha512-JnkzkyIHAjK7+zJLEQieQg5iDwEqoX200BBFa0rfMU7jI9BQWBnM9BZh16gQecCyBjK0S149wZPb0SoTh2o34g==
+"@types/graphql@14.2.3":
+  version "14.2.3"
+  resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-14.2.3.tgz#cfc6420a67eb20420786f90112357921974593b9"
+  integrity sha512-UoCovaxbJIxagCvVfalfK7YaNhmxj3BQFRQ2RHQKLiu+9wNXhJnlbspsLHt/YQM99IaLUUFJNzCwzc6W0ypMeQ==
 
 "@types/http-assert@*":
   version "1.5.1"
