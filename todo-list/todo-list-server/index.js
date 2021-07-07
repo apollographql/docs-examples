@@ -21,7 +21,7 @@ const typeDefs = `
 `;
 
 // LRU cache for storing to-do items
-const cache = LRU({ max: 50, maxAge: 1000 * 60 * 60 });
+const cache = LRU({ max: 25, maxAge: 1000 * 60 * 5 });
 
 // Resolver definitions
 const resolvers = {
