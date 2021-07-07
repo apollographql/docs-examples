@@ -4,7 +4,7 @@
   "description": "Example server for use in the Apollo docs",
   "dependencies": {
     "apollo-server": "2.22.2",
-    "graphql": "15.5.0",
+    "graphql": "15.5.1",
     "lru-cache": "4.1.2",
     "shortid": "2.2.15"
   },
