@@ -1,0 +1,18 @@
+{
+  "name": "server-subscriptions-as3",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@graphql-tools/schema": "^7.1.5",
+    "apollo-server-express": "3.0.0",
+    "express": "^4.17.1",
+    "graphql": "^15.5.1",
+    "graphql-subscriptions": "^1.2.1",
+    "nodemon": "^2.0.7",
+    "subscriptions-transport-ws": "^0.9.19"
+  }
+}
