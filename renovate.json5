@@ -1,0 +1,41 @@
+{
+  extends: [
+    "config:base"
+  ],
+  rangeStrategy: "bump",
+  dependencyDashboard: true,
+  packageRules: [
+    // Keep Apollo Server examples on the right major version.
+    {
+      matchPaths: ["apollo-server/v2/**"],
+      matchPackagePrefixes: ["apollo-server"],
+      allowedVersions: "2.x",
+    },
+    {
+      matchPaths: ["apollo-server/v3/**"],
+      matchPackagePrefixes: ["apollo-server"],
+      allowedVersions: "3.x",
+    },
+    // Bunch up all non-major dependencies into a single PR.  In the common case
+    // where the upgrades apply cleanly, this causes less noise and is resolved
+    // faster than starting a bunch of upgrades in parallel for what may turn
+    // out to be a suite of related packages all released at once.
+    {
+      "groupName": "all non-major dependencies",
+      "matchUpdateTypes": ["patch", "minor"],
+      "groupSlug": "all-minor-patch",
+    },
+    {
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      // Once we think these Renovate settings are working,
+      // we can change this to true in order to get non-major
+      // bumps to auto-merge.
+      "automerge": false,
+    },
+  ]
+}
