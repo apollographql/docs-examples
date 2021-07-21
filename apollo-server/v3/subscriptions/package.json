@@ -8,11 +8,11 @@
   "license": "MIT",
   "dependencies": {
     "@graphql-tools/schema": "^7.1.5",
-    "apollo-server-express": "3.0.0",
+    "apollo-server-express": "3.0.2",
     "express": "^4.17.1",
     "graphql": "^15.5.1",
     "graphql-subscriptions": "^1.2.1",
-    "nodemon": "^2.0.7",
+    "nodemon": "^2.0.12",
     "subscriptions-transport-ws": "^0.9.19"
   }
 }
