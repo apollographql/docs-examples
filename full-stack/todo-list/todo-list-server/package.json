@@ -1,0 +1,21 @@
+{
+  "name": "todo-list-server",
+  "version": "1.0.0",
+  "description": "Example server for use in the Apollo docs",
+  "dependencies": {
+    "apollo-server": "2.25.2",
+    "graphql": "15.5.1",
+    "lru-cache": "4.1.5",
+    "shortid": "2.2.16"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js localhost 4000"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@types/graphql": "14.2.3",
+    "nodemon": "2.0.12"
+  }
+}
