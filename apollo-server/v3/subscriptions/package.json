@@ -7,8 +7,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@graphql-tools/schema": "^8.0.1",
-    "apollo-server-express": "3.0.2",
+    "@graphql-tools/schema": "^7.1.5",
+    "apollo-server-express": "3.1.2",
     "express": "^4.17.1",
     "graphql": "^15.5.1",
     "graphql-subscriptions": "^1.2.1",
