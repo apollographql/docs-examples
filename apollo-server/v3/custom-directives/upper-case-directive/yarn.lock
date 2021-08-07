@@ -397,7 +397,7 @@ apollo-server-types@^3.1.1:
     apollo-server-caching "^3.0.1"
     apollo-server-env "^4.0.3"
 
-apollo-server@^3.1.1:
+apollo-server@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/apollo-server/-/apollo-server-3.1.2.tgz#84a1d7fd0633362c5d0a24b6bb1da7f7fa0a05f3"
   integrity sha512-PxM0ZiyQok88XqzsCnKStT7o1TKbjvKDTtjKK25JQhSmaI6/X1gjfj5SJtuB9xIYT5u4gbPVWZeP6M4aeZ9wxQ==
