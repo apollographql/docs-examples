@@ -1,8 +1,9 @@
 const { ApolloServer, gql } = require('apollo-server');
 const { makeExecutableSchema } = require('@graphql-tools/schema');
-const { SchemaDirectiveVisitor } = require ('@graphql-tools/utils');
+const { mapSchema, getDirective, MapperKind } = require('@graphql-tools/utils');
 const { defaultFieldResolver } = require('graphql');
 
+// Our GraphQL schema
 const typeDefs = gql`
   directive @upper on FIELD_DEFINITION
 
@@ -11,6 +12,7 @@ const typeDefs = gql`
   }
 `;
 
+// Our resolvers (notice the hard-coded string is *not* all-caps)
 const resolvers = {
   Query: {
     hello() {
@@ -19,36 +21,49 @@ const resolvers = {
   }
 };
 
-class UpperCaseDirective extends SchemaDirectiveVisitor {
+// This function takes in a schema and adds upper-casing logic
+// to every resolver for an object field that has a directive with
+// the specified name (we're using `upper`)
+function upperDirectiveTransformer(schema, directiveName) {
+  return mapSchema(schema, {
 
-  // Called on server startup for each @upper field
-  visitFieldDefinition(field) {
+    // Executes once for each object field in the schema
+    [MapperKind.OBJECT_FIELD]: (fieldConfig) => {
 
-    // Obtain the field's resolver
-    const { resolve = defaultFieldResolver } = field;
+      // Check whether this field has the specified directive
+      const upperDirective = getDirective(schema, fieldConfig, directiveName)?.[0];
 
-    // *Replace* the field's resolver with a function
-    // that calls the *original* resolver, then converts
-    // the result to uppercase before returning
-    field.resolve = async function (...args) {
-      const result = await resolve.apply(this, args);
-      if (typeof result === 'string') {
-        return result.toUpperCase();
+      if (upperDirective) {
+
+        // Get this field's original resolver
+        const { resolve = defaultFieldResolver } = fieldConfig;
+
+        // Replace the original resolver with a function that *first* calls
+        // the original resolver, then converts its result to upper case
+        fieldConfig.resolve = async function (source, args, context, info) {
+          const result = await resolve(source, args, context, info);
+          if (typeof result === 'string') {
+            return result.toUpperCase();
+          }
+          return result;
+        }
+        return fieldConfig;
       }
-      return result;
-    };
-  }
+    }
+  });
 }
 
-const server = new ApolloServer({
-  schema: makeExecutableSchema({
-    typeDefs,
-    resolvers,
-    schemaDirectives: {
-      upper: UpperCaseDirective,
-    }
-  })
+// Create the base executable schema
+let schema = makeExecutableSchema({
+  typeDefs,
+  resolvers
 });
+
+// Transform the schema by applying directive logic
+schema = upperDirectiveTransformer(schema, 'upper');
+
+// Provide the schema to the ApolloServer constructor
+const server = new ApolloServer({schema});
 
 server.listen().then(({ url }) => {
   console.log(`🚀 Server ready at ${url}`);

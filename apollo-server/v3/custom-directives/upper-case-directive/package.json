@@ -7,8 +7,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@graphql-tools/schema": "^7.1.5",
-    "@graphql-tools/utils": "^7.10.0",
+    "@graphql-tools/schema": "^8.1.1",
+    "@graphql-tools/utils": "^8.1.1",
     "apollo-server": "^3.1.2",
     "graphql": "^15.5.1",
     "nodemon": "^2.0.12"
