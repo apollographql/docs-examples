@@ -1,3 +1,4 @@
+// @ts-check
 // we import our typeDefs and resolvers for creating an Apollo Server instance for testing
 const { typeDefs, resolvers, ApolloServer } = require('./server.js');
 const express = require('express');
@@ -43,18 +44,21 @@ const createTestHttpServer = async (server) => {
 };
 
 describe('e2e demo', () => {
-  let httpServer;
+  let httpServer, testApolloServer, expressApp;
 
   // before the tests we will create both a Apollo Server instance and an HTTP server for testing
   beforeAll(async () => {
-    const testApolloServer = await createTestApolloServer();
+    testApolloServer = await createTestApolloServer();
     const testHttpServer = await createTestHttpServer(testApolloServer);
     expressApp = testHttpServer.expressApp;
     httpServer = testHttpServer.httpServer;
   });
 
   // after the tests we will stop our server
-  afterAll(async () => await httpServer?.close());
+  afterAll(async () => {
+    await httpServer?.close();
+    await testApolloServer?.stop();
+  });
 
   it('says hello', async () => {
     const response = await request(expressApp).post('/graphql').send(queryData);

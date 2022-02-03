@@ -29,5 +29,5 @@ yarn start
   <img alt="Edit" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
 
-Note that in order to run the tests within CodeSandbox you will need to fork the
+Note that to run tests within CodeSandbox you will need to first fork the
 sandbox, then open a new terminal and run `yarn test`.
