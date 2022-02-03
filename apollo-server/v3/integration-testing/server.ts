@@ -44,5 +44,3 @@ export const resolvers = {
     });
   }
 })();
-
-// module.exports = { typeDefs, resolvers, ApolloServer };
