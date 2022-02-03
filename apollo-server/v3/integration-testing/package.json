@@ -5,7 +5,7 @@
   "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "start": "jest",
+    "test": "jest",
     "local": "nodemon server.js"
   },
   "dependencies": {

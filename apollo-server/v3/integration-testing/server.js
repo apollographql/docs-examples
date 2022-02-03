@@ -18,7 +18,7 @@ const startApolloServer = async () => {
   const app = express();
   const httpServer = http.createServer(app);
 
-  server = new ApolloServer({ typeDefs, resolvers });
+  const server = new ApolloServer({ typeDefs, resolvers });
   await server.start();
 
   await server.applyMiddleware({
