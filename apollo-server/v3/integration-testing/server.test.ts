@@ -1,6 +1,6 @@
 // @ts-check
 // we import our typeDefs and resolvers for creating an Apollo Server instance for testing
-const { typeDefs, resolvers, ApolloServer } = require('./server.js');
+const { typeDefs, resolvers, ApolloServer } = require('./server.ts');
 const express = require('express');
 const { createServer } = require('http');
 

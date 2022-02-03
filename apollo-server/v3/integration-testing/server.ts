@@ -1,17 +1,17 @@
 // @ts-check
 const { createServer } = require('http');
 const express = require('express');
-const { ApolloServer, gql } = require('apollo-server-express');
+export const { ApolloServer, gql } = require('apollo-server-express');
 
 // Schema definition
-const typeDefs = gql`
+export const typeDefs = gql`
   type Query {
     hello(name: String): String!
   }
 `;
 
 // Resolver map
-const resolvers = {
+export const resolvers = {
   Query: {
     hello: (_, { name }) => `Hello ${name}!`,
   },
@@ -45,5 +45,4 @@ const resolvers = {
   }
 })();
 
-// exporting these for testing
-module.exports = { typeDefs, resolvers, ApolloServer };
+// module.exports = { typeDefs, resolvers, ApolloServer };
