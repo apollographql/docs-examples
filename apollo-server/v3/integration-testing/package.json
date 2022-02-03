@@ -5,8 +5,8 @@
   "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "test": "jest",
-    "start": "nodemon server.js"
+    "start": "jest",
+    "local": "nodemon server.js"
   },
   "dependencies": {
     "apollo-server-express": "^3.6.2",
