@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "local": "nodemon server.js"
+    "start": "nodemon server.js"
   },
   "dependencies": {
     "apollo-server-express": "^3.6.2",
