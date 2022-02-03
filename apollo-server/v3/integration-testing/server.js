@@ -37,6 +37,7 @@ const startApolloServer = async () => {
   }
 };
 
-startApolloServer();
+// Uncomment the below line to start the server
+// startApolloServer();
 
 module.exports = { typeDefs, resolvers, ApolloServer };

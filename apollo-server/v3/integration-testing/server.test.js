@@ -1,4 +1,4 @@
-// we import our typeDefs and resolvers for creating a new Apollo Server for testing
+// we import our typeDefs and resolvers for creating an Apollo Server instance for testing
 const { typeDefs, resolvers, ApolloServer } = require('./server.js');
 const express = require('express');
 const { createServer } = require('http');
@@ -25,7 +25,7 @@ const createTestApolloServer = async () => {
   return testServer;
 };
 
-// create a new http server for testing
+// create a new http server for testing (we pass in our test instance of Apollo Server)
 const createTestHttpServer = async (server) => {
   // create our test
   const app = express();
@@ -45,7 +45,7 @@ const createTestHttpServer = async (server) => {
 describe('e2e demo', () => {
   let httpServer;
 
-  // before the tests we will create our http server
+  // before the tests we will create both a Apollo Server instance and an HTTP server for testing
   beforeAll(async () => {
     const testApolloServer = await createTestApolloServer();
     const testHttpServer = await createTestHttpServer(testApolloServer);
