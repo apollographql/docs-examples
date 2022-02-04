@@ -2,18 +2,16 @@
   "name": "integration-testing",
   "version": "1.0.0",
   "description": "An example of integration testing with Apollo Server",
-  "main": "server.js",
+  "main": "src/main.ts",
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "start": "nodemon main.ts"
+    "start": "nodemon src/main.ts"
   },
   "dependencies": {
     "@types/jest": "^27.4.0",
     "@types/node": "^17.0.14",
     "apollo-server": "^3.6.2",
-    "apollo-server-express": "^3.6.2",
-    "express": "^4.17.2",
     "graphql": "^16.3.0",
     "jest": "^27.4.7",
     "nodemon": "^2.0.15",

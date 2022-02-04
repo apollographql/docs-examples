@@ -1,4 +1,4 @@
-export const { ApolloServer, gql } = require('apollo-server');
+import { ApolloServer, gql } from 'apollo-server';
 
 // Schema definition
 export const typeDefs = gql`
@@ -20,7 +20,7 @@ export const createApolloServer = async (options = { port: 4000 }) => {
     resolvers,
   });
 
-  server
+  return server
     .listen(options, () => {
       if (process.env.NODE_ENV !== 'test') {
         console.log(
