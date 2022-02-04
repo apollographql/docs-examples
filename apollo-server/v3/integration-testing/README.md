@@ -4,8 +4,8 @@ This example demonstrates the basics of integration testing using an HTTP Server
 and the `apollo-server-express` package.
 [See the docs on integration testing for more information](https://www.apollographql.com/docs/apollo-server/testing/testing/).
 
-Check out the `server.test.ts` file if you'd like to see how we are defining our
-test.
+Check out the `src/__tests__/server.test.ts` file if you'd like to see how we
+are defining our test.
 
 ## Run locally
 
