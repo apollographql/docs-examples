@@ -1,7 +1,4 @@
-// @ts-check
-const { createServer } = require('http');
-const express = require('express');
-export const { ApolloServer, gql } = require('apollo-server-express');
+export const { ApolloServer, gql } = require('apollo-server');
 
 // Schema definition
 export const typeDefs = gql`
@@ -17,30 +14,21 @@ export const resolvers = {
   },
 };
 
-(async () => {
-  const PORT = 4000;
-  const app = express();
-  const httpServer = createServer(app);
-
+export const createApolloServer = async (options = { port: 4000 }) => {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
   });
 
-  await server.start();
-  await server.applyMiddleware({
-    app,
-    path: '/graphql',
-  });
-
-  // // The `listen` method launches a web server.
-  // Start our server if we're not in a test env.
-  // if we're in a test env, we'll manually start it in a test
-  if (process.env.NODE_ENV !== 'test') {
-    httpServer.listen(PORT, () => {
-      console.log(
-        `🚀 Query endpoint ready at http://localhost:${PORT}${server.graphqlPath}`,
-      );
+  server
+    .listen(options, () => {
+      if (process.env.NODE_ENV !== 'test') {
+        console.log(
+          `🚀 Query endpoint ready at http://localhost:${options.port}${server.graphqlPath}`,
+        );
+      }
+    })
+    .then((serverResponse) => {
+      return serverResponse;
     });
-  }
-})();
+};

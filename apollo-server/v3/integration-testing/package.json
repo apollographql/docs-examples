@@ -6,11 +6,12 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "start": "nodemon server.ts"
+    "start": "nodemon main.ts"
   },
   "dependencies": {
     "@types/jest": "^27.4.0",
     "@types/node": "^17.0.14",
+    "apollo-server": "^3.6.2",
     "apollo-server-express": "^3.6.2",
     "express": "^4.17.2",
     "graphql": "^16.3.0",
