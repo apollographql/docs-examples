@@ -1,7 +1,7 @@
 # Integration Testing in Apollo Server v3
 
-This example demonstrates the basics of integration testing with the
-`apollo-server` package.
+This example demonstrates the basics of integration testing the `apollo-server`
+package.
 [See the docs on integration testing for more information](https://www.apollographql.com/docs/apollo-server/testing/testing/).
 
 Check out the `src/__tests__/server.test.ts` file if you'd like to see how we
