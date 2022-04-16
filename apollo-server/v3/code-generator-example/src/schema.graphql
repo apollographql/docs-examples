@@ -1,0 +1,48 @@
+type Query {
+  "Returns a list of all of the dogs"
+  getDogs: [Dog!]!
+}
+
+type Mutation {
+  "Adds a new dog to the list of dogs"
+  addDog(dogInfo: DogInput!): addDogMutationResponse!
+}
+
+"""
+The fields necessary to add a new dog
+"""
+input DogInput {
+  "The name of the dog"
+  name: String!
+  "The breed of the dog"
+  breed: String!
+  "How old the dog is"
+  age: Int!
+}
+
+"""
+The mutation response to adding a new dog
+"""
+type addDogMutationResponse {
+  "Similar to HTTP status code, represents the status of the mutation"
+  code: Int!
+  "Indicates whether the mutation was successful"
+  success: Boolean!
+  "Human-readable message for the UI"
+  message: String!
+  "The added dog"
+  dog: Dog
+}
+
+"""
+A dog is a kind of dog.
+"""
+type Dog {
+  id: ID!
+  "The name of the dog"
+  name: String!
+  "The breed of the dog"
+  breed: String!
+  "How old the dog is"
+  age: Int!
+}
