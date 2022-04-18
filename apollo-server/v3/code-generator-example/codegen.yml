@@ -1,3 +1,4 @@
+# This configuration file tells GraphQL Code Generator how to generate types based on our schema.
 schema: ./src/schema.graphql
 generates:
   ./src/__generated__/resolvers-types.ts:
@@ -6,4 +7,7 @@ generates:
     plugins:
       - typescript
       - typescript-resolvers
-      - typescript-operations
+    configs:
+      # This configuration line tells GraphQL Code Generator to use our model as the basis of the Dog type it generates.
+      mappers:
+        Dog: ./model#DogModel

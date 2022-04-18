@@ -14,7 +14,7 @@ export type Scalars = {
   Float: number;
 };
 
-/** A dog is a kind of dog. */
+/** A type representing a Dog. */
 export type Dog = {
   __typename?: 'Dog';
   /** How old the dog is */
@@ -22,11 +22,13 @@ export type Dog = {
   /** The breed of the dog */
   breed: Scalars['String'];
   id: Scalars['ID'];
+  /** The image for a dog */
+  image: Scalars['String'];
   /** The name of the dog */
   name: Scalars['String'];
 };
 
-/** The fields necessary to add a new dog */
+/** The fields necessary to create a new dog. */
 export type DogInput = {
   /** How old the dog is */
   age: Scalars['Int'];
@@ -38,27 +40,28 @@ export type DogInput = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  /** Adds a new dog to the list of dogs */
-  addDog: AddDogMutationResponse;
+  /** Create a new dog */
+  createDog: CreateDogMutationResponse;
 };
 
 
-export type MutationAddDogArgs = {
+export type MutationCreateDogArgs = {
   dogInfo: DogInput;
 };
 
 export type Query = {
   __typename?: 'Query';
+  getDog: Array<Dog>;
   /** Returns a list of all of the dogs */
   getDogs: Array<Dog>;
 };
 
-/** The mutation response to adding a new dog */
-export type AddDogMutationResponse = {
-  __typename?: 'addDogMutationResponse';
+/** The mutation response to attempting to create a new dog. */
+export type CreateDogMutationResponse = {
+  __typename?: 'createDogMutationResponse';
   /** Similar to HTTP status code, represents the status of the mutation */
   code: Scalars['Int'];
-  /** The added dog */
+  /** The created dog */
   dog?: Maybe<Dog>;
   /** Human-readable message for the UI */
   message: Scalars['String'];
@@ -144,7 +147,7 @@ export type ResolversTypes = ResolversObject<{
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
   String: ResolverTypeWrapper<Scalars['String']>;
-  addDogMutationResponse: ResolverTypeWrapper<AddDogMutationResponse>;
+  createDogMutationResponse: ResolverTypeWrapper<CreateDogMutationResponse>;
 }>;
 
 /** Mapping between all available schema types and the resolvers parents */
@@ -157,26 +160,28 @@ export type ResolversParentTypes = ResolversObject<{
   Mutation: {};
   Query: {};
   String: Scalars['String'];
-  addDogMutationResponse: AddDogMutationResponse;
+  createDogMutationResponse: CreateDogMutationResponse;
 }>;
 
 export type DogResolvers<ContextType = any, ParentType extends ResolversParentTypes['Dog'] = ResolversParentTypes['Dog']> = ResolversObject<{
   age?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   breed?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  image?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
-  addDog?: Resolver<ResolversTypes['addDogMutationResponse'], ParentType, ContextType, RequireFields<MutationAddDogArgs, 'dogInfo'>>;
+  createDog?: Resolver<ResolversTypes['createDogMutationResponse'], ParentType, ContextType, RequireFields<MutationCreateDogArgs, 'dogInfo'>>;
 }>;
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
+  getDog?: Resolver<Array<ResolversTypes['Dog']>, ParentType, ContextType>;
   getDogs?: Resolver<Array<ResolversTypes['Dog']>, ParentType, ContextType>;
 }>;
 
-export type AddDogMutationResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['addDogMutationResponse'] = ResolversParentTypes['addDogMutationResponse']> = ResolversObject<{
+export type CreateDogMutationResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['createDogMutationResponse'] = ResolversParentTypes['createDogMutationResponse']> = ResolversObject<{
   code?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   dog?: Resolver<Maybe<ResolversTypes['Dog']>, ParentType, ContextType>;
   message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -188,6 +193,6 @@ export type Resolvers<ContextType = any> = ResolversObject<{
   Dog?: DogResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
-  addDogMutationResponse?: AddDogMutationResponseResolvers<ContextType>;
+  createDogMutationResponse?: CreateDogMutationResponseResolvers<ContextType>;
 }>;
 

@@ -7,8 +7,6 @@
     "module": "commonjs",
     "target": "ES2017",
     "moduleResolution": "node",
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "strictNullChecks": false
+    "esModuleInterop": true
   }
 }
