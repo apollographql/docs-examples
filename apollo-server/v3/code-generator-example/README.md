@@ -1,6 +1,6 @@
 # Apollo Server and Code Generator Example
 
-This example demonstrates how to set up the ["batteries-included" Apollo Server package](https://www.apollographql.com/docs/apollo-server/integrations/middleware#apollo-server) using types generated using the [GraphQL Code Generator](https://www.graphql-code-generator.com/).
+This example demonstrates how to set up the ["batteries-included" Apollo Server package](https://www.apollographql.com/docs/apollo-server/integrations/middleware#apollo-server) using types generated from the [GraphQL Code Generator](https://www.graphql-code-generator.com/).
 
 <!-- TODO: create article based on this example and plug the link here. -->
 
