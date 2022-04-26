@@ -42,6 +42,6 @@ export class DogsAPI extends RESTDataSource {
     const response = await this.get("/search?size=med&mime_types=jpg&format=json&order=RANDOM&page=0&limit=1");
     const newImage: string = response[0].url;
     const newDog = { id: `dog-0${newId}`, name, age, breed, image: newImage };
-    return newDog;
+    return newDog as Dog;
   }
 }

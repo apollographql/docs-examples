@@ -7,11 +7,10 @@
   "main": "src/main.ts",
   "scripts": {
     "generate": "graphql-codegen",
-    "build": "tsc -w",
-    "watch": "nodemon ./dist/index.js",
-    "predev": "npm run generate",
+    "watch": "concurrently  --names \"CodeGen,TS,Nodemon\" -c \"bgYellow,bgBlue,bgMagenta\" \"npm run generate --watch 'src/**/*.ts'\"  \"tsc -w \" \"nodemon ./dist/main.js \"",
     "dev": "concurrently \"npm run build\" \"npm run watch\"",
-    "start": "node ./dist/index.js"
+    "build": "npm run generate && tsc --build",
+    "start": "npm run build && node ./dist/main.js"
   },
   "dependencies": {
     "@graphql-tools/utils": "^8.6.8",

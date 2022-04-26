@@ -1,5 +1,6 @@
 # This configuration file tells GraphQL Code Generator how to generate types based on our schema.
 schema: ./src/schema.graphql
+watch: true
 generates:
   ./src/__generated__/resolvers-types.ts:
     config:
