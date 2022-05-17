@@ -9,7 +9,7 @@ The `src/resolvers.ts` file shows how to create both `Query` and `Mutation` reso
 To run this example locally:
 
 ```bash
-npm run dev
+npm i && npm start
 ```
 
 When your server is up you can navigate to [http://localhost:4000/](http://localhost:4000/) in your favorite browser and use the [Apollo Sandbox](https://www.apollographql.com/docs/studio/explorer/sandbox/) to perform GraphQL operations against the server.

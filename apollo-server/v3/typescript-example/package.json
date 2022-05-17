@@ -7,7 +7,7 @@
   "main": "src/main.ts",
   "scripts": {
     "generate": "graphql-codegen",
-    "watch": "concurrently  --names \"CodeGen,TS,Nodemon\" -c \"bgYellow,bgBlue,bgMagenta\" \"npm run generate --watch 'src/**/*.ts'\"  \"tsc -w \" \"nodemon ./dist/main.js \"",
+    "watch": "concurrently  --names \"CodeGen,TS,Nodemon\" -c \"bgYellow,bgBlue,bgMagenta\" \"graphql-codegen --watch 'src/**/*.ts'\"  \"tsc -w \" \"nodemon ./dist/main.js \"",
     "build": "npm run generate && tsc --build",
     "start": "npm run build && node ./dist/main.js"
   },
