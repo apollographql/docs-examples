@@ -1,0 +1,50 @@
+type Query {
+  "Returns a list of all of our example dogs"
+  getDogs: [Dog!]!
+}
+
+type Mutation {
+  "Creates a new dog"
+  createDog(dogInfo: DogInput!): createDogMutationResponse!
+}
+
+"""
+The fields necessary to create a new dog
+"""
+input DogInput {
+  "The name of the dog"
+  name: String!
+  "The breed of the dog"
+  breed: String!
+  "How old the dog is"
+  age: Int!
+}
+
+"""
+The mutation response for attempting to create a new dog
+"""
+type createDogMutationResponse {
+  "Similar to HTTP status code, represents the status of the mutation"
+  code: Int!
+  "Indicates whether the mutation was successful"
+  success: Boolean!
+  "Human-readable message for the UI"
+  message: String!
+  "If we successfully create a dog we return it"
+  dog: Dog
+}
+
+"""
+A type representing a Dog
+"""
+type Dog {
+  id: ID!
+  "The name of the dog"
+  name: String!
+  "The breed of the dog"
+  breed: String!
+  "How old the dog is"
+  age: Int!
+  "The image for a dog"
+  image: String!
+}
