@@ -12,11 +12,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@apollo/server": "https://pkg.csb.dev/apollographql/apollo-server/commit/461f7178/@apollo/server",
-    "concurrently": "^7.2.1",
-    "cors": "^2.8.5",
+    "@apollo/server": "https://pkg.csb.dev/apollographql/apollo-server/commit/81fc0e62/@apollo/server",
     "graphql": "^16.5.0",
-    "nodemon": "^2.0.15",
+    "graphql-tag": "^2.12.6",
     "typescript": "^4.7.2"
   }
 }

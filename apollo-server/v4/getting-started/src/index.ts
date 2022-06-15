@@ -1,21 +1,23 @@
-// import { standaloneServer } from '../../packages/server/src/standalone';
-// import { ApolloServer } from '../../packages/server/src';
-// import { gql } from 'graphql-tag';
-import { gql, ApolloServer, startStandaloneServer } from '@apollo/server';
+import { ApolloServer, startStandaloneServer } from '@apollo/server';
+import { gql } from 'graphql-tag';
 
+// A schema is a collection of type definitions (hence "typeDefs")
+// that together define the "shape" of queries that are executed against
+// your data.
 const typeDefs = gql`
+  # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
+
+  # This "Book" type defines the queryable fields for every book in our data source.
   type Book {
     title: String
     author: String
   }
 
-  type Quote {
-    written: String
-  }
-
+  # The "Query" type is special: it lists all of the available queries that
+  # clients can execute, along with the return type for each. In this
+  # case, the "books" query returns an array of zero or more Books (defined above).
   type Query {
     books: [Book]
-    quote: Quote
   }
 `;
 
@@ -34,102 +36,19 @@ const books = [
 // schema. This resolver retrieves books from the "books" array above.
 const resolvers = {
   Query: {
-    books: (_, __, context) => {
-      console.log(context);
-      return books;
-    },
+    books: () => books,
   },
 };
 
-// interface MyContext {
-//   token: string;
-//   dataSources: {
-//     quotesAPI: QuotesAPI;
-//   };
-// }
-
-// // returns an ApolloServerStandalone instance
-// const apolloServerInstance = new ApolloServer<MyContext>({
-//   typeDefs,
-//   resolvers,
-// });
-
-// const { url } = await standaloneServer(apolloServerInstance, {
-//   async context({ req, res }) {
-//     return {
-//       token: get,
-//     };
-//   },
-// }).listen({ port: 4000 });
-// //  The listen() method accepts the same
-// // arguments that http.Server's listen() method does (in the options form only).
-
-// console.log(`🚀  Server ready at: ${url}`);
-
-// class DogsDataSource {
-//   private cache: KeyValueCache<string>;
-//   constructor({ cache }) {
-//     this.cache = cache;
-//   }
-
-//   async getDogs() {
-//     return [{ name: 'Fido' }];
-//   }
-// }
-// interface MyContext {
-//   dataSources: {
-//     dogs: DogsDataSource;
-//   };
-// }
-
-// const server = new ApolloServer<MyContext>({
-//   typeDefs: `
-//     type Query { dog: Dog }
-//     type Dog { name: String }
-//   `,
-//   resolvers: {
-//     Query: {
-//       dog: async (_, __, context) => {
-//         return (await context.dataSources.dogs.getDogs())[0];
-//       },
-//     },
-//   },
-// });
-// // HTTPApolloServer<MyContext>
-// standaloneServer(server, {
-//   async context({ req, res }) {
-//     return {
-//       dataSources: { dogs: new DogsDataSource({ cache: server['internals'].cache }) },
-//     };
-//   },
-// });
-
+// The ApolloServer constructor requires two parameters: your schema
+// definition and your set of resolvers.
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  introspection: true,
 });
 
-// HTTPApolloServer<MyContext>
-
+// The startStandaloneServer accepts an instance of ApolloServer and returns
+// a promise containing the URL where the server is listening for requests.
 const { url } = await startStandaloneServer(server, { listen: { port: 4000 } });
 
-console.log(`server ready at ${url}`);
-// A schema is a collection of type definitions (hence "typeDefs")
-// that together define the "shape" of queries that are executed against
-// your data.
-//
-// await standaloneServer(server, {
-//   async context({ req, res }) {
-//     return {
-//       token: 'test',
-//     };
-//   },
-// },listen: { port: 4000 },
-// })
-
-//  The listen() method accepts the same
-// arguments that http.Server's listen() method does (in the options form only).
-
-//  The listen() method accepts the same
-// arguments that http.Server's listen() method does (in the options form only).
+console.log(`🚀 Server listening at: ${url}`);
