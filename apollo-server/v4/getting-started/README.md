@@ -2,7 +2,7 @@
 
 <!-- TODO: update link once finalized -->
 
-This is the complete code from [Getting started with Apollo Server](https://www.apollographql.com/docs/apollo-server/getting-started/).
+This is the complete code from [Get started with Apollo Server](https://www.apollographql.com/docs/apollo-server/v4/getting-started/).
 
 ## Run locally
 
