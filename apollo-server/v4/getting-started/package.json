@@ -5,7 +5,6 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "watch": "concurrently  --names \"TS,Nodemon\" -c \"bgYellow,bgBlue\" \"tsc -w \" \"nodemon ./dist/index.js \"",
     "start": "tsc && node ./dist/index.js"
   },
   "keywords": [],
