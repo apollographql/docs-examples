@@ -1,8 +1,6 @@
-# Apollo Server getting started
+# Getting started with Apollo Server 4
 
-<!-- TODO: update link once finalized -->
-
-This is the complete code from [Get started with Apollo Server](https://www.apollographql.com/docs/apollo-server/v4/getting-started/).
+This is the complete code from [Get started with Apollo Server](https://www.apollographql.com/docs/apollo-server/v4/getting-started).
 
 ## Run locally
 
