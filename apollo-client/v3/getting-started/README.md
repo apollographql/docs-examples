@@ -2,8 +2,6 @@
 
 This is the complete code from [Get started with Apollo Client](https://www.apollographql.com/docs/react/get-started).
 
-You can run both components locally, or you can view them on CodeSandbox:
-
 ## Run locally
 
 ```shell
