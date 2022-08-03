@@ -1,0 +1,20 @@
+{
+  "name": "as4-alpha-example",
+  "version": "1.0.0",
+  "description": "An example of getting started with the AS4 alpha",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "tsc && node ./dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/server": "^4.0.0-alpha.2",
+    "@graphql-tools/schema": "^8.5.1",
+    "@graphql-tools/utils": "^8.9.0",
+    "graphql": "^16.5.0",
+    "typescript": "^4.7.4"
+  }
+}
