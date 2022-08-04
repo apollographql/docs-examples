@@ -1,0 +1,27 @@
+{
+  "name": "as4-subscriptions-graphql-ws",
+  "version": "1.0.0",
+  "description": "An example of setting up subscriptions with Apollo Server 4",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "postinstall": "npm run compile",
+    "compile": "tsc",
+    "start": "npm run compile && node ./dist/index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@apollo/server": "^4.0.0-alpha.1",
+    "@graphql-tools/schema": "^7.1.5",
+    "express": "^4.17.1",
+    "graphql": "^16.5.0",
+    "graphql-subscriptions": "^1.2.1",
+    "graphql-ws": "^5.5.5",
+    "typescript": "^4.7.4",
+    "ws": "^8.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.6.3",
+    "@types/ws": "^8.2.2"
+  }
+}
