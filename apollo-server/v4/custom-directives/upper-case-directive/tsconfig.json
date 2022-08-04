@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "rootDirs": ["upper-case-directive/src"],
+    "rootDirs": ["src"],
     "outDir": "dist",
-    "lib": ["es2019"],
-    "target": "es2019",
+    "lib": ["es2020"],
+    "target": "es2020",
     "module": "esnext",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "types": ["node"]
   }
 }

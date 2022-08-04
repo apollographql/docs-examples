@@ -5,8 +5,8 @@ This example server from the Apollo Server documentation demonstrates an impleme
 ## Run locally
 
 ```shell
-yarn install
-yarn start
+npm install
+npm start
 ```
 
 ## Run in CodeSandbox

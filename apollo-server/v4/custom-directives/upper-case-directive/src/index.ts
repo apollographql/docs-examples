@@ -17,7 +17,6 @@ const typeDefs = `#graphql
 const resolvers = {
   Query: {
     hello() {
-      console.log('hello');
       return 'Hello World!';
     },
   },
