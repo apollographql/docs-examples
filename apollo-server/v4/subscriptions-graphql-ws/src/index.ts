@@ -7,8 +7,7 @@ import { makeExecutableSchema } from '@graphql-tools/schema';
 import { WebSocketServer } from 'ws';
 import { useServer } from 'graphql-ws/lib/use/ws';
 import { PubSub } from 'graphql-subscriptions';
-import pkg from 'body-parser';
-const { json } = pkg;
+import bodyParser from 'body-parser';
 import cors from 'cors';
 
 const PORT = 4000;
@@ -74,8 +73,9 @@ const server = new ApolloServer({
     },
   ],
 });
+
 await server.start();
-app.use('/graphql', cors<cors.CorsRequest>(), json(), expressMiddleware(server));
+app.use('/graphql', cors<cors.CorsRequest>(), bodyParser.json(), expressMiddleware(server));
 
 // Now that our HTTP server is fully set up, actually listen.
 httpServer.listen(PORT, () => {
@@ -83,13 +83,13 @@ httpServer.listen(PORT, () => {
   console.log(`🚀 Subscription endpoint ready at ws://localhost:${PORT}/graphql`);
 });
 
-// In the background, increment a number every second and notify subscribers when
-// it changes.
+// In the background, increment a number every second and notify subscribers when it changes.
 let currentNumber = 0;
 function incrementNumber() {
   currentNumber++;
   pubsub.publish('NUMBER_INCREMENTED', { numberIncremented: currentNumber });
   setTimeout(incrementNumber, 1000);
 }
+
 // Start incrementing
 incrementNumber();
