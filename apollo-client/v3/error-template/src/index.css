@@ -1,0 +1,24 @@
+body {
+  font-family: sans-serif;
+  padding: 0.5rem;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+.add-person {
+  display: flex;
+  flex-direction: column;
+  width: 16em;
+}
+
+.add-person input {
+  height: 2.25em;
+  margin: 1em 0;
+}
+
+.add-person button {
+  height: 2.25em;
+  cursor: pointer;
+}

@@ -1,0 +1,11 @@
+# Please see the documentation for all configuration options:
+# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    # At the time of writing, the error-template is the only example repo that uses Dependabot. I'll leave
+    # it this way for now, but TODO: We should probably set dependabot loose on the other examples we have
+    directory: "/apollo-client/v3/error-template"
+    schedule:
+      interval: "daily"
