@@ -1,5 +1,6 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
+import type { ListenOptions } from 'net';
 
 // Schema definition
 export const typeDefs = `
@@ -17,17 +18,13 @@ export const resolvers = {
 };
 
 // This function will create a new server Apollo Server instance
-export const createApolloServer = async (options = { port: 4000 }) => {
+export const createApolloServer = async (listenOptions: ListenOptions = { port: 4000 }) => {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
   });
 
-  const { url } = await await startStandaloneServer(server, { listen: options });
-
-  if (process.env.NODE_ENV !== 'test') {
-    console.log(`🚀 Query endpoint ready at ${url}`);
-  }
+  const { url } = await startStandaloneServer(server, { listen: listenOptions });
 
   // return the server instance and the url the server is listening on
   return { server, url };
@@ -37,5 +34,6 @@ export const createApolloServer = async (options = { port: 4000 }) => {
 // but in a real app you'd export `createApolloServer` into
 // another file and call it elsewhere.
 if (process.env.NODE_ENV !== 'test') {
-  await createApolloServer();
+  const { url } = await createApolloServer();
+  console.log(`🚀 Query endpoint ready at ${url}`);
 }
