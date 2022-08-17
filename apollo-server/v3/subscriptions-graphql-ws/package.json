@@ -13,7 +13,7 @@
     "apollo-server-express": "3.6.2",
     "express": "^4.17.1",
     "graphql": "^15.5.1",
-    "graphql-subscriptions": "^1.2.1",
+    "graphql-subscriptions": "^2.0.0",
     "graphql-ws": "^5.5.5",
     "typescript": "^4.5.5",
     "ws": "^8.4.2"
