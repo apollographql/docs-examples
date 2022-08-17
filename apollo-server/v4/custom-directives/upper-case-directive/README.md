@@ -1,6 +1,6 @@
 # Uppercase custom directive
 
-This example server [from the Apollo Server docs](https://www.apollographql.com/docs/apollo-server/v4/schema/creating-directives) demonstrates how to create a custom `@upper` directive that transforms a `String` GraphQL field to uppercase.
+This example demonstrates how to create a custom `@upper` directive that transforms a `String` GraphQL field to uppercase.
 
 ## Run locally
 
