@@ -10,7 +10,7 @@ import resolvers from './resolvers.js';
 
 // Import our schema file
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const schemaFile = path.join(__dirname, '../schema.graphql');
+const schemaFile = path.join(__dirname, '../src/schema.graphql');
 const typeDefs = readFileSync(schemaFile, { encoding: 'utf-8' });
 
 export interface MyContext {
