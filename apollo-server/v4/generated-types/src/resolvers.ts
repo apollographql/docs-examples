@@ -1,4 +1,4 @@
-import { Resolvers, MutationAddBookArgs, AddBookMutationResponse } from './__generated__/resolvers-types';
+import { Resolvers, MutationAddBookArgs } from './__generated__/resolvers-types';
 
 // Use our generated Resolvers type to add type checking to all of our
 // resolvers!
