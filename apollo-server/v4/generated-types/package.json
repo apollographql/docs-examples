@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "postinstall": "npm run compile",
-    "compile": "tsc && graphql-codegen --config codegen.yml",
+    "compile": "graphql-codegen --config codegen.yml && tsc",
     "start": "npm run compile && node ./dist/index.js",
     "build": "npm run compile && tsc --build",
     "watch": "concurrently  --names \"CodeGen,TS,Nodemon\" -c \"bgYellow,bgBlue,bgMagenta\" \"graphql-codegen --watch 'src/**/*.ts'\"  \"tsc -w \" \"nodemon ./dist/index.js \""
