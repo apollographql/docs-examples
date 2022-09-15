@@ -1,4 +1,4 @@
-import { Resolvers, MutationAddBookArgs } from './__generated__/resolvers-types';
+import { Resolvers } from './__generated__/resolvers-types';
 
 // Use our generated Resolvers type to add type checking to all of our
 // resolvers!
@@ -13,7 +13,7 @@ const resolvers: Resolvers = {
   Mutation: {
     // Below, we mock adding a new book. Our data set is static for this
     // example, so we won't actually modify our data.
-    addBook: (_, { title, author }: MutationAddBookArgs, { dataSources }) => {
+    addBook: (_, { title, author }, { dataSources }) => {
       dataSources.books.push({ title, author });
       console.log(dataSources.books);
 
