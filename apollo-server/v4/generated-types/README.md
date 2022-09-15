@@ -1,10 +1,8 @@
 # Apollo Server and GraphQL Code Generator example
 
-This example demonstrates how to set up the Apollo Server using types generated from the [GraphQL Code Generator](https://www.graphql-code-generator.com/).
+This example demonstrates how to set up the Apollo Server using types generated from the [GraphQL Code Generator](https://www.graphql-code-generator.com/). See [Generating types from a GraphQL Schema](https://www.apollographql.com/docs/apollo-server/workflow/generate-types) for more information.
 
-See our [Generating types from a GraphQL Schema](https://www.apollographql.com/docs/apollo-server/workflow/generate-types#installing-dependencies) article for more information.
-
-The GraphQL Code Generator generates types and puts them into the `src/__generated___/resolvers.ts` file. Take a look at the `src/resolver.ts` file to see how we use the generated types to set up type checking for our resolvers. 
+The GraphQL Code Generator generates our types in the `src/__generated___/resolvers.ts` file. Take a look at the `src/resolver.ts` file to see how we use the generated types to set up type checking for our resolvers. 
 
 ## Run locally
 
