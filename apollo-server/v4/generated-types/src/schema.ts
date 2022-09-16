@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-export default gql(`
+export default gql`
   type Query {
     books: [Book]
   }
@@ -20,4 +20,4 @@ export default gql(`
   type Mutation {
     addBook(title: String, author: String): AddBookMutationResponse
   }
-`);
+`;
