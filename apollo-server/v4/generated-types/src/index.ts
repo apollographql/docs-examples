@@ -1,17 +1,10 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
-import { readFileSync } from 'fs';
-import path, { dirname } from 'path';
-import { fileURLToPath } from 'url';
 // Here we import the automatically generated Book type, so we can use it in our
 // context typing.
 import { Book } from './__generated__/resolvers-types';
 import resolvers from './resolvers.js';
-
-// Import our schema file
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const schemaFile = path.join(__dirname, '../src/schema.graphql');
-const typeDefs = readFileSync(schemaFile, { encoding: 'utf-8' });
+import typeDefs from './schema.js';
 
 export interface MyContext {
   dataSources: {
