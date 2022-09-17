@@ -6,23 +6,15 @@ const resolvers: Resolvers = {
   Query: {
     // Our third argument (`contextValue`) has a type here, so we
     // can check the properties within our resolver's shared context value.
-    books: (_, __, contextValue) => {
-      return contextValue.dataSources.books;
+    books: async (_, __, contextValue) => {
+      return await contextValue.dataSources.getBooks();
     },
   },
   Mutation: {
     // Below, we mock adding a new book. Our data set is static for this
     // example, so we won't actually modify our data.
-    addBook: (_, { title, author }, { dataSources }) => {
-      dataSources.books.push({ title, author });
-      console.log(dataSources.books);
-
-      return {
-        code: '200',
-        success: true,
-        message: 'New book added!',
-        book: dataSources.books[-1],
-      };
+    addBook: async (_, { title, author }, { dataSources }) => {
+     return await dataSources.addBook({ title, author });
     },
   },
 };
