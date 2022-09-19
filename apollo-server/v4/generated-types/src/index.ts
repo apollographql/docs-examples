@@ -8,7 +8,9 @@ import resolvers from './resolvers.js';
 import typeDefs from './schema.js';
 
 export interface MyContext {
-  dataSources: BooksDataSource;
+  dataSources: {
+    booksAPI: BooksDataSource
+  };
 }
 
 // The ApolloServer constructor requires two parameters: your schema
@@ -24,7 +26,9 @@ const { url } = await startStandaloneServer(server, {
       // We are using a static data set for this example, but normally
       // this would be where you'd add your data source connections
       // or your REST API classes.
-      dataSources: new BooksDataSource(),
+      dataSources: {
+        booksAPI: new BooksDataSource()
+      },
     };
   },
 });
