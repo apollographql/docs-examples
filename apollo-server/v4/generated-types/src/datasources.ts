@@ -3,8 +3,8 @@
 import { AddBookMutationResponse, Book } from './__generated__/resolvers-types';
 
 export class BooksDataSource {
-// Our example static data set
-  books: {title?: string, author?:string}[] = [
+  // Our example static data set
+  books: { title?: string; author?: string }[] = [
     {
       title: 'The Awakening',
       author: 'Kate Chopin',
@@ -12,7 +12,7 @@ export class BooksDataSource {
     {
       title: 'City of Glass',
       author: 'Paul Auster',
-    }
+    },
   ];
 
   getBooks(): Book[] {
@@ -23,15 +23,15 @@ export class BooksDataSource {
   // We are using a static data set for this small example, but normally
   // this Mutation would *mutate* our underlying data using a database
   // or a REST API.
-  async addBook(book: Book):Promise<AddBookMutationResponse>  {
+  async addBook(book: Book): Promise<AddBookMutationResponse> {
     this.books.push(book);
-    console.log(this.books)
+    console.log(this.books);
 
     return {
       code: '200',
       success: true,
       message: 'New book added!',
-      book: this.books[this.books.length - 1]
-    }
+      book: this.books[this.books.length - 1],
+    };
   }
 }
