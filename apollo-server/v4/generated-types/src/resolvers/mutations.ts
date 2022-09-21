@@ -1,7 +1,6 @@
 import { MutationResolvers } from '__generated__/resolvers-types';
 
-// Use the generated MutationResolvers type to add type checking to all of our
-// mutations!
+// Use the generated `MutationResolvers` type to type check our mutations!
 const mutations: MutationResolvers = {
   Mutation: {
     // Below, we mock adding a new book. Our data set is static for this

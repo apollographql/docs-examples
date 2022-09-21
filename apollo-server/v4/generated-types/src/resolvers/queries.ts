@@ -1,7 +1,6 @@
 import { QueryResolvers } from '__generated__/resolvers-types';
 
-// Use the generated QueryResolvers type to add type checking to all of our
-// queries!
+// Use the generated `QueryResolvers` type to type check our queries!
 const queries: QueryResolvers = {
   Query: {
     // Our third argument (`contextValue`) has a type here, so we
