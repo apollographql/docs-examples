@@ -6,15 +6,10 @@ import { BooksDataSource } from './datasources.js';
 import { Book } from './__generated__/resolvers-types';
 import resolvers from './resolvers/index.js';
 import { readFileSync } from 'fs';
-import path, { dirname } from 'path';
-import { fileURLToPath } from 'url';
 
-// If you are using ESM module syntax you can redefine `__dirname` as
-// shown below. If you are using CJS syntax you can use `__dirname` directly.
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const schemaFile = path.join(__dirname, '../schema.graphql');
-// Once we have our schema's file path, read in our schema.
-const typeDefs = readFileSync(schemaFile, { encoding: 'utf-8' });
+// Note: this only works locally because it relies on `npm` routing
+// from the root directory of the project.
+const typeDefs = readFileSync('./schema.graphql', { encoding: 'utf-8' });
 
 export interface MyContext {
   dataSources: {
