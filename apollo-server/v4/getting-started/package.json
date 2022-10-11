@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@apollo/server": "latest",
+    "@apollo/server": "^4.0.0",
     "graphql": "^16.6.0",
     "typescript": "^4.7.4"
   },
