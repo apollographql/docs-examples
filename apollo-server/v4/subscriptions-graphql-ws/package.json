@@ -11,7 +11,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@apollo/server": "^4.0.0-alpha.1",
+    "@apollo/server": "^4.0.0",
     "@graphql-tools/schema": "^7.1.5",
     "express": "^4.17.1",
     "graphql": "^16.6.0",
