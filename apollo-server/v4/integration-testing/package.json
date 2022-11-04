@@ -6,7 +6,7 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "test": "npm run compile && jest",
+    "test": "npm run compile && node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "postinstall": "npm run compile",
     "compile": "tsc",
     "start": "npm run compile && node ./dist/server.js"
