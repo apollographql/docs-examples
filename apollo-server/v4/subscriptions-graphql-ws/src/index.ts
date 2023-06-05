@@ -13,6 +13,9 @@ import cors from 'cors';
 const PORT = 4000;
 const pubsub = new PubSub();
 
+// A number that we'll increment over time to simulate subscription events
+let currentNumber = 0;
+
 // Schema definition
 const typeDefs = `#graphql
   type Query {
@@ -84,7 +87,6 @@ httpServer.listen(PORT, () => {
 });
 
 // In the background, increment a number every second and notify subscribers when it changes.
-let currentNumber = 0;
 function incrementNumber() {
   currentNumber++;
   pubsub.publish('NUMBER_INCREMENTED', { numberIncremented: currentNumber });
