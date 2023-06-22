@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "dependencies": {
     "@apollo/client": "3.4.5",
-    "graphql": "15.5.1",
+    "graphql": "16.7.1",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-scripts": "3.4.4"
