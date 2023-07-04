@@ -1,10 +1,11 @@
-import db from "./db/conn.mjs";
+import db from "./db/conn.js";
+import { ObjectId } from "mongodb";
 
 const resolvers = {
   Query: {
     async record(_, { id }, context) {
       let collection = await db.collection("records");
-      let query = {_id: new ObjectId(req.params.id)};
+      let query = {_id: new ObjectId(id)};
 
       return await collection.findOne(query);
     },

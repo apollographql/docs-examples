@@ -1,10 +1,14 @@
-import express from "express";
+import dotenv from "dotenv";
+dotenv.config();
+
+import express, { json } from "express";
 import cors from "cors";
-import "./loadEnvironment.mjs";
+import gql from "graphql-tag";
 import { ApolloServer } from '@apollo/server';
 import { buildSubgraphSchema } from '@apollo/subgraph';
 import { expressMiddleware } from '@apollo/server/express4';
-import resolvers from "./resolvers.mjs";
+import resolvers from "./resolvers.js";
+import { readFileSync } from "fs";
 
 const PORT = process.env.PORT || 5050;
 const app = express();
@@ -17,7 +21,8 @@ const typeDefs = gql(
     readFileSync("schema.graphql", {
       encoding: "utf-8",
     })
-  );
+);
+  
 const schema = buildSubgraphSchema({ typeDefs, resolvers });
 const server = new ApolloServer({
     schema,
