@@ -4,12 +4,14 @@ type Query {
 }
 
 type Mutation {
-  createRecord(name: String!, position: String, level: Int): Record
+  createRecord(name: String!, position: String, level: String): Record
+  deleteRecord(id: ID!): Boolean
+  updateRecord(id: ID! name: String, position: String, level: String): Record
 }
 
 type Record {
   id: ID
   name: String
   position: String
-  level: Int
+  level: String
 }
