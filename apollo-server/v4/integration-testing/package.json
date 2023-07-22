@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@types/jest": "^27.5.2",
-    "@types/node": "^17.0.45",
+    "@types/node": "^18.17.0",
     "supertest": "^6.2.2"
   }
 }

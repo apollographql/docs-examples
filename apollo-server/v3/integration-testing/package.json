@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@types/jest": "^27.4.0",
-    "@types/node": "^17.0.14",
+    "@types/node": "^18.17.0",
     "apollo-server": "^3.6.2",
     "graphql": "^16.3.0",
     "jest": "^27.4.7",
