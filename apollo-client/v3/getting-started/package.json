@@ -6,7 +6,7 @@
   "homepage": "https://codesandbox.io/s/new",
   "main": "src/index.js",
   "dependencies": {
-    "@apollo/client": "^3.6.9",
+    "@apollo/client": "^3.7.17",
     "graphql": "15.8.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",

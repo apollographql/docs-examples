@@ -7,8 +7,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "apollo-server": "^2.25.2",
-    "graphql": "^15.5.1",
-    "nodemon": "^2.0.12"
+    "apollo-server": "^2.26.1",
+    "graphql": "^15.8.0",
+    "nodemon": "^2.0.22"
   }
 }
