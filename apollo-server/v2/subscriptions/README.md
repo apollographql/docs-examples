@@ -9,8 +9,8 @@ After you start up this server, you can test out running a subscription with the
 ## Run locally
 
 ```shell
-yarn install
-yarn start
+npm install
+npm start
 ```
 
 ## Run in CodeSandbox

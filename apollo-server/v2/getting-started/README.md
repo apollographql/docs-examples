@@ -5,8 +5,8 @@ This is the complete code from [Get started with Apollo Server v2](https://www.a
 ## Run locally
 
 ```shell
-yarn install
-yarn start
+npm install
+npm start
 ```
 
 ## Run in CodeSandbox
