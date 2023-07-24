@@ -4,26 +4,36 @@
   additionalBranchPrefix: "{{parentDir}}-",
   dependencyDashboard: true,
   packageRules: [
+    // group non-major updates by team
     {
       matchFileNames: [
         "apollo-client/**",
         "full-stack/todo-list/todo-list-client/**",
       ],
+      groupName: "all apollo client non-major dependencies",
+      matchUpdateTypes: ["patch", "minor"],
       assignees: ["alessbell"],
       labels: ["apollo-client"],
+      groupSlug: "all-apollo-client-minor-patch",
     },
     {
       matchFileNames: [
         "apollo-server/**",
         "full-stack/todo-list/todo-list-server/**",
       ],
+      groupName: "all apollo server non-major dependencies",
+      matchUpdateTypes: ["patch", "minor"],
       assignees: ["trevor-scheer"],
       labels: ["apollo-server"],
+      groupSlug: "all-apollo-server-minor-patch",
     },
     {
       matchFileNames: ["apollo-gateway/**"],
+      groupName: "all apollo gateway non-major dependencies",
+      matchUpdateTypes: ["patch", "minor"],
       assignees: ["smyrick"],
       labels: ["apollo-gateway"],
+      groupSlug: "all-apollo-gateway-minor-patch",
     },
     // Keep Apollo Server examples on the right major version.
     {
@@ -40,15 +50,6 @@
       matchFileNames: ["apollo-server/v3/**"],
       matchPackagePrefixes: ["@graphql-tools"],
       allowedVersions: "7.x",
-    },
-    // Bunch up all non-major dependencies into a single PR.  In the common case
-    // where the upgrades apply cleanly, this causes less noise and is resolved
-    // faster than starting a bunch of upgrades in parallel for what may turn
-    // out to be a suite of related packages all released at once.
-    {
-      groupName: "all non-major dependencies",
-      matchUpdateTypes: ["patch", "minor"],
-      groupSlug: "all-minor-patch",
     },
     {
       matchUpdateTypes: ["minor", "patch", "pin", "digest"],
