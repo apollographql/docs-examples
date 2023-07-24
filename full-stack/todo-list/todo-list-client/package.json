@@ -4,8 +4,8 @@
   "description": "Example client for use in the Apollo docs",
   "main": "src/index.js",
   "dependencies": {
-    "@apollo/client": "3.4.5",
-    "graphql": "15.5.1",
+    "@apollo/client": "3.7.17",
+    "graphql": "15.8.0",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-scripts": "3.4.4"
@@ -15,7 +15,7 @@
     "> 1%"
   ],
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
