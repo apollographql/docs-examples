@@ -1,49 +1,43 @@
 {
-  extends: [
-    "config:base"
-  ],
+  extends: ["config:base"],
   rangeStrategy: "bump",
-  "additionalBranchPrefix": "{{parentDir}}-",
+  additionalBranchPrefix: "{{parentDir}}-",
   dependencyDashboard: true,
   packageRules: [
-  "packageRules": [
     {
-      "paths": [
+      matchFileNames: [
         "apollo-client/**",
-        "full-stack/todo-list/todo-list-client/**"
+        "full-stack/todo-list/todo-list-client/**",
       ],
-      "assignees": ["alessbell"],
-      "labels": ["apollo-client"]
+      assignees: ["alessbell"],
+      labels: ["apollo-client"],
     },
     {
-      "paths": [
+      matchFileNames: [
         "apollo-server/**",
-        "full-stack/todo-list/todo-list-server/**"
+        "full-stack/todo-list/todo-list-server/**",
       ],
-      "assignees": ["trevor-scheer"],
-      "labels": ["apollo-server"]
+      assignees: ["trevor-scheer"],
+      labels: ["apollo-server"],
     },
     {
-      "paths": [
-        "apollo-gateway/**",
-      ],
-      "assignees": ["smyrick"],
-      "labels": ["apollo-gateway"]
-    }
-  ],
+      matchFileNames: ["apollo-gateway/**"],
+      assignees: ["smyrick"],
+      labels: ["apollo-gateway"],
+    },
     // Keep Apollo Server examples on the right major version.
     {
-      matchPaths: ["apollo-server/v2/**"],
+      matchFileNames: ["apollo-server/v2/**"],
       matchPackagePrefixes: ["apollo-server"],
       allowedVersions: "2.x",
     },
     {
-      matchPaths: ["apollo-server/v3/**"],
+      matchFileNames: ["apollo-server/v3/**"],
       matchPackagePrefixes: ["apollo-server"],
       allowedVersions: "3.x",
     },
     {
-      matchPaths: ["apollo-server/v3/**"],
+      matchFileNames: ["apollo-server/v3/**"],
       matchPackagePrefixes: ["@graphql-tools"],
       allowedVersions: "7.x",
     },
@@ -52,21 +46,16 @@
     // faster than starting a bunch of upgrades in parallel for what may turn
     // out to be a suite of related packages all released at once.
     {
-      "groupName": "all non-major dependencies",
-      "matchUpdateTypes": ["patch", "minor"],
-      "groupSlug": "all-minor-patch",
+      groupName: "all non-major dependencies",
+      matchUpdateTypes: ["patch", "minor"],
+      groupSlug: "all-minor-patch",
     },
     {
-      "matchUpdateTypes": [
-        "minor",
-        "patch",
-        "pin",
-        "digest"
-      ],
+      matchUpdateTypes: ["minor", "patch", "pin", "digest"],
       // Once we think these Renovate settings are working,
       // we can change this to true in order to get non-major
       // bumps to auto-merge.
-      "automerge": false,
+      automerge: false,
     },
-  ]
+  ],
 }
