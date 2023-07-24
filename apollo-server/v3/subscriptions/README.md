@@ -15,8 +15,8 @@ subscription IncrementingNumber {
 ## Run locally
 
 ```shell
-yarn install
-yarn start
+npm install
+npm start
 ```
 
 ## Run in CodeSandbox
