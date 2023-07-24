@@ -1,6 +1,5 @@
 {
   extends: ["config:base"],
-  rangeStrategy: "bump",
   additionalBranchPrefix: "{{parentDir}}-",
   dependencyDashboard: true,
   packageRules: [
