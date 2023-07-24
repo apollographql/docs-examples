@@ -4,11 +4,11 @@
   "description": "",
   "private": true,
   "dependencies": {
-    "@apollo/client": "3.6.9",
-    "@testing-library/jest-dom": "5.16.4",
-    "@testing-library/react": "13.3.0",
-    "@testing-library/user-event": "14.2.1",
-    "graphql": "15.8.0",
+    "@apollo/client": "3.7.17",
+    "@testing-library/jest-dom": "5.17.0",
+    "@testing-library/react": "14.0.0",
+    "@testing-library/user-event": "14.4.3",
+    "graphql": "16.7.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-scripts": "5.0.1"
@@ -24,5 +24,8 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "keywords": []
+  "keywords": [],
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "7.21.11"
+  }
 }

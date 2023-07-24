@@ -14,7 +14,7 @@ export const GET_DOG_QUERY = gql`
 
 export function Dog({ name }) {
   const { loading, error, data } = useQuery(GET_DOG_QUERY, {
-    variables: { name }
+    variables: { name },
   });
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error.message}</p>;
