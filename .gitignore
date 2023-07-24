@@ -2,3 +2,5 @@ node_modules
 
 **/dist
 **/__generated__
+
+apollo-server/v4/mern-stack/package-lock.json
