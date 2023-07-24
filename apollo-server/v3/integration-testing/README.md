@@ -12,15 +12,15 @@ are defining our test.
 To run the tests locally:
 
 ```shell
-yarn
-yarn test
+npm install
+npm test
 ```
 
 To run the server locally:
 
 ```shell
-yarn
-yarn start
+npm install
+npm start
 ```
 
 ## Run in CodeSandbox
@@ -30,4 +30,4 @@ yarn start
 </a>
 
 Note that to run tests within CodeSandbox you will need to first fork the
-sandbox, then open a new terminal and run `yarn test`.
+sandbox, then open a new terminal and run `npm test`.
