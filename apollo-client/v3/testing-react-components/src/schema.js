@@ -4,7 +4,7 @@ import {
   GraphQLObjectType,
   GraphQLID,
   GraphQLString,
-  GraphQLList
+  GraphQLList,
 } from "graphql";
 import { ApolloLink, Observable } from "@apollo/client";
 
@@ -13,27 +13,27 @@ const DogType = new GraphQLObjectType({
   fields: {
     id: { type: GraphQLID },
     name: { type: GraphQLString },
-    breed: { type: GraphQLString }
-  }
+    breed: { type: GraphQLString },
+  },
 });
 
 let dogData = [
   { id: "1", name: "Buck", breed: "bulldog" },
   { id: "2", name: "Blueberry", breed: "poodle" },
-  { id: "3", name: "Mozzarella", breed: "corgi" }
+  { id: "3", name: "Mozzarella", breed: "corgi" },
 ];
 
 const QueryType = new GraphQLObjectType({
   name: "Query",
   fields: {
     dogs: {
-      type: GraphQLList(DogType),
-      resolve: () => dogData
+      type: new GraphQLList(DogType),
+      resolve: () => dogData,
     },
     dog: {
       type: DogType,
       args: {
-        name: { type: GraphQLString }
+        name: { type: GraphQLString },
       },
       resolve: (_, { name }) => {
         const findDogByName = dogData.find(
@@ -43,9 +43,9 @@ const QueryType = new GraphQLObjectType({
         return dogData.find(
           (dog) => dog.name.toLowerCase() === name.toLowerCase()
         );
-      }
-    }
-  }
+      },
+    },
+  },
 });
 
 const MutationType = new GraphQLObjectType({
@@ -54,16 +54,16 @@ const MutationType = new GraphQLObjectType({
     deleteDog: {
       type: DogType,
       args: {
-        name: { type: GraphQLString }
+        name: { type: GraphQLString },
       },
       resolve: function (_, { name }) {
         const result = dogData.filter(
           (dog) => dog.name.toLowerCase() !== name.toLowerCase()
         );
         return (dogData = result);
-      }
-    }
-  }
+      },
+    },
+  },
 });
 
 const schema = new GraphQLSchema({ query: QueryType, mutation: MutationType });
@@ -81,7 +81,7 @@ export const link = new ApolloLink((operation) => {
         schema,
         source: print(query),
         variableValues: variables,
-        operationName
+        operationName,
       });
       observer.next(result);
       observer.complete();

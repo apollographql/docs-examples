@@ -8,15 +8,15 @@ const mocks = [
     request: {
       query: GET_DOG_QUERY,
       variables: {
-        name: "Buck"
-      }
+        name: "Buck",
+      },
     },
     result: {
       data: {
-        dog: { id: "1", name: "Buck", breed: "bulldog" }
-      }
-    }
-  }
+        dog: { id: "1", name: "Buck", breed: "bulldog" },
+      },
+    },
+  },
 ];
 
 it("renders without error", async () => {
@@ -32,11 +32,11 @@ it("should render dog", async () => {
   const dogMock = {
     request: {
       query: GET_DOG_QUERY,
-      variables: { name: "Buck" }
+      variables: { name: "Buck" },
     },
     result: {
-      data: { dog: { id: 1, name: "Buck", breed: "poodle" } }
-    }
+      data: { dog: { id: 1, name: "Buck", breed: "poodle" } },
+    },
   };
   render(
     <MockedProvider mocks={[dogMock]} addTypename={false}>
@@ -51,9 +51,9 @@ it("should show error UI", async () => {
   const dogMock = {
     request: {
       query: GET_DOG_QUERY,
-      variables: { name: "Buck" }
+      variables: { name: "Buck" },
     },
-    error: new Error("An error occurred")
+    error: new Error("An error occurred"),
   };
   render(
     <MockedProvider mocks={[dogMock]} addTypename={false}>
