@@ -13,13 +13,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@apollo/gateway": "^2.3.3",
-    "@apollo/server": "^4.0.0",
-    "@apollo/subgraph": "^2.3.3",
-    "graphql": "^16.6.0",
-    "typescript": "^4.7.4"
+    "@apollo/gateway": "^2.5.1",
+    "@apollo/server": "^4.8.1",
+    "@apollo/subgraph": "^2.5.1",
+    "graphql": "^16.7.1",
+    "typescript": "^4.9.5"
   },
   "devDependencies": {
-    "@types/node": "^18.6.3"
+    "@types/node": "^18.17.0"
   }
 }
