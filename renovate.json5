@@ -3,8 +3,34 @@
     "config:base"
   ],
   rangeStrategy: "bump",
+  "additionalBranchPrefix": "{{parentDir}}-",
   dependencyDashboard: true,
   packageRules: [
+  "packageRules": [
+    {
+      "paths": [
+        "apollo-client/**",
+        "full-stack/todo-list/todo-list-client/**"
+      ],
+      "assignees": ["alessbell"],
+      "labels": ["apollo-client"]
+    },
+    {
+      "paths": [
+        "apollo-server/**",
+        "full-stack/todo-list/todo-list-server/**"
+      ],
+      "assignees": ["trevor-scheer"],
+      "labels": ["apollo-server"]
+    },
+    {
+      "paths": [
+        "apollo-gateway/**",
+      ],
+      "assignees": ["smyrick"],
+      "labels": ["apollo-gateway"]
+    }
+  ],
     // Keep Apollo Server examples on the right major version.
     {
       matchPaths: ["apollo-server/v2/**"],
