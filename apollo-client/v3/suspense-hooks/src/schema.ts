@@ -6,6 +6,7 @@ import {
   GraphQLID,
   GraphQLString,
   GraphQLList,
+  GraphQLError,
 } from "graphql";
 import { ApolloLink, Observable } from "@apollo/client";
 
@@ -18,10 +19,33 @@ const DogType = new GraphQLObjectType({
   },
 });
 
+const BreedType = new GraphQLObjectType({
+  name: "Breed",
+  fields: {
+    id: { type: GraphQLID },
+    name: { type: GraphQLString },
+    characteristics: { type: new GraphQLList(GraphQLString) },
+  },
+});
+
 let dogData = [
   { id: "1", name: "Buck", breed: "bulldog" },
   { id: "2", name: "Blueberry", breed: "poodle" },
   { id: "3", name: "Mozzarella", breed: "corgi" },
+];
+
+let breedData = [
+  {
+    id: "25",
+    name: "bulldog",
+    characteristics: ["kind", "courageous", "dignified"],
+  },
+  { id: "26", name: "poodle", characteristics: ["lively", "fun", "active"] },
+  {
+    id: "27",
+    name: "corgi",
+    characteristics: ["intelligent", "happy", "independent"],
+  },
 ];
 
 const QueryType = new GraphQLObjectType({
@@ -31,20 +55,29 @@ const QueryType = new GraphQLObjectType({
       type: new GraphQLList(DogType),
       resolve: () => dogData,
     },
+    breeds: {
+      type: new GraphQLList(BreedType),
+      resolve: async () => {
+        await delay(300);
+        return breedData;
+      },
+    },
     dog: {
       type: DogType,
       args: {
-        name: { type: GraphQLString },
+        id: { type: GraphQLString },
       },
-      resolve: (_, { name }) => {
+      resolve: async (_, { id }) => {
+        // await delay(300);
         const findDogByName = dogData.find(
-          (dog) => dog.name.toLowerCase() === name.toLowerCase()
+          (dog) => dog.id.toLowerCase() === id.toLowerCase()
         );
-        if (!name || !findDogByName) return dogData[0];
-        return dogData.find(
-          (dog) => dog.name.toLowerCase() === name.toLowerCase()
-        );
+        if (!id || !findDogByName) return dogData[0];
+        return findDogByName;
       },
+      // resolve: () => {
+      //   return new GraphQLError("Error! Something went wrong.");
+      // },
     },
   },
 });
@@ -77,7 +110,6 @@ export const link = new ApolloLink((operation) => {
   // @ts-expect-error
   return new Observable(async (observer) => {
     const { query, operationName, variables } = operation;
-    await delay(300);
     try {
       const result = await graphql({
         schema,
