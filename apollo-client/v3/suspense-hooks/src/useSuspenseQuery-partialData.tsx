@@ -36,6 +36,9 @@ export const GET_DOG_QUERY: TypedDocumentNode<Data, Variables> = gql`
 const GET_DOG_QUERY_PARTIAL: TypedDocumentNode = gql`
   query GetDog($id: String) {
     dog(id: $id) {
+      # By default, an object's cache key is a combination of its
+      # __typename and id fields, so we should always make sure the
+      # id is in the response so our data can be normalized and cached properly.
       id
       name
     }
@@ -47,7 +50,7 @@ function App() {
 
   client.cache.writeQuery({
     query: GET_DOG_QUERY_PARTIAL,
-    variables: { name: "Buck" },
+    variables: { id: "1" },
     data: { dog: { id: "1", name: "Buck" } },
   });
 
@@ -63,6 +66,7 @@ function Dog({ id }: DogProps) {
     variables: { id },
     returnPartialData: true,
   });
+
   return (
     <>
       <div>Name: {data?.dog?.name}</div>

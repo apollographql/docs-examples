@@ -28,6 +28,9 @@ interface DogProps {
 export const GET_DOG_QUERY: TypedDocumentNode<DogData, Variables> = gql`
   query GetDog($id: String) {
     dog(id: $id) {
+      # By default, an object's cache key is a combination of its
+      # __typename and id fields, so we should always make sure the
+      # id is in the response so our data can be normalized and cached properly.
       id
       name
     }
@@ -46,6 +49,7 @@ export const GET_DOGS_QUERY: TypedDocumentNode<DogsData, Variables> = gql`
 function App() {
   const { data } = useSuspenseQuery(GET_DOGS_QUERY);
   const [selectedDog, setSelectedDog] = useState(data.dogs[0].name);
+
   return (
     <>
       <select
@@ -73,6 +77,7 @@ function Dog({ id }: DogProps) {
   const { data } = useSuspenseQuery(GET_DOG_QUERY, {
     variables: { id },
   });
+
   return (
     <>
       <div>Name: {data.dog.name}</div>

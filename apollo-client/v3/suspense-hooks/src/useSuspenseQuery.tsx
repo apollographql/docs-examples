@@ -19,6 +19,9 @@ interface DogProps {
 
 export const GET_DOG_QUERY: TypedDocumentNode<Data, Variables> = gql`
   query GetDog($id: String) {
+    # By default, an object's cache key is a combination of its
+    # __typename and id fields, so we should always make sure the
+    # id is in the response so our data can be normalized and cached properly.
     dog(id: $id) {
       id
       name
@@ -29,7 +32,9 @@ export const GET_DOG_QUERY: TypedDocumentNode<Data, Variables> = gql`
 function App() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <Dog id="3" />
+      <Dog
+        id="3" // let's fetch Mozzarella
+      />
     </Suspense>
   );
 }

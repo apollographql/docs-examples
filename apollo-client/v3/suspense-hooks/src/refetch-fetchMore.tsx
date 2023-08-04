@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useTransition } from "react";
 import {
   gql,
   TypedDocumentNode,
@@ -27,19 +27,22 @@ interface Variables {
 
 interface DogProps {
   id: string;
+  isPending: boolean;
   queryRef: QueryReference<BreedData>;
   refetchHandler: () => void;
+}
+
+interface BreedsProps {
+  isPending: boolean;
+  queryRef: QueryReference<BreedData>;
 }
 
 export const GET_DOG_QUERY: TypedDocumentNode<Data, Variables> = gql`
   query GetDog($id: String) {
     dog(id: $id) {
-      # By default, an object's cache key is a combination of
-      # its __typename and id fields, so we need to fetch the
-      # id so our data can be normalized and cached properly.
-      #
-      # For more information, see the docs on customizing cache IDs:
-      # https://www.apollographql.com/docs/react/caching/cache-configuration/#customizing-cache-ids
+      # By default, an object's cache key is a combination of its
+      # __typename and id fields, so we should always make sure the
+      # id is in the response so our data can be normalized and cached properly.
       id
       name
       breed
@@ -58,39 +61,50 @@ export const GET_BREEDS_QUERY: TypedDocumentNode<BreedData> = gql`
 `;
 
 function App() {
+  const [isPending, startTransition] = useTransition();
   const [queryRef, { refetch }] = useBackgroundQuery(GET_BREEDS_QUERY);
 
   const refetchHandler = () => {
-    refetch();
+    startTransition(() => {
+      refetch();
+    });
   };
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <Dog id="3" queryRef={queryRef} refetchHandler={refetchHandler} />
+      <Dog
+        id="3"
+        queryRef={queryRef}
+        isPending={isPending}
+        refetchHandler={refetchHandler}
+      />
     </Suspense>
   );
 }
 
-function Dog({ id, queryRef, refetchHandler }: DogProps) {
+function Dog({ id, queryRef, isPending, refetchHandler }: DogProps) {
   const { data } = useSuspenseQuery(GET_DOG_QUERY, {
     variables: { id },
   });
+
   return (
     <>
       Name: {data.dog.name}
       <Suspense fallback={<div>Loading breeds...</div>}>
-        <Breeds queryRef={queryRef} />
+        <Breeds isPending={isPending} queryRef={queryRef} />
       </Suspense>
       <button onClick={refetchHandler}>Refetch!</button>
     </>
   );
 }
 
-function Breeds({ queryRef }: { queryRef: QueryReference<BreedData> }) {
+function Breeds({ queryRef, isPending }: BreedsProps) {
   const { data } = useReadQuery(queryRef);
   return data.breeds.map(({ characteristics }) =>
     characteristics.map((characteristic) => (
-      <div key={characteristic}>{characteristic}</div>
+      <div style={{ opacity: `${isPending ? 0.5 : 1}` }} key={characteristic}>
+        {characteristic}
+      </div>
     ))
   );
 }

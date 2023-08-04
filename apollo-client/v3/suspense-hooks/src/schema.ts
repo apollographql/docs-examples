@@ -68,7 +68,7 @@ const QueryType = new GraphQLObjectType({
         id: { type: GraphQLString },
       },
       resolve: async (_, { id }) => {
-        // await delay(300);
+        await delay(300);
         const findDogByName = dogData.find(
           (dog) => dog.id.toLowerCase() === id.toLowerCase()
         );
