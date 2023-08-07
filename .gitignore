@@ -4,3 +4,4 @@ node_modules
 **/__generated__
 
 apollo-server/v4/mern-stack/package-lock.json
+**/.idea
