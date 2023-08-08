@@ -49,7 +49,7 @@ export const GET_DOGS_QUERY: TypedDocumentNode<DogsData, Variables> = gql`
 
 function App() {
   const { data } = useSuspenseQuery(GET_DOGS_QUERY);
-  const [selectedDog, setSelectedDog] = useState(data.dogs[0].name);
+  const [selectedDog, setSelectedDog] = useState(data.dogs[0].id);
 
   return (
     <>
