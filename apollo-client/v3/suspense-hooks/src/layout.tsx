@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { routes } from "./routes";
 import { useMemo } from "react";
 
@@ -29,8 +29,8 @@ export function Layout() {
           <ul>
             {routes.map(({ path, title }) => (
               <li key={path}>
-                <a
-                  href={`/${path}`}
+                <Link
+                  to={`/${path}`}
                   dangerouslySetInnerHTML={{ __html: title }}
                 />
               </li>
