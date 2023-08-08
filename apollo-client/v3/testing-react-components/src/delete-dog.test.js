@@ -14,15 +14,14 @@ it("should render without error", () => {
 });
 
 it("should render loading and success states on delete", async () => {
-  const deleteDog = { name: "Buck", breed: "Poodle", id: 1 };
   const mocks = [
     {
       request: {
         query: DELETE_DOG_MUTATION,
-        variables: { name: "Buck" }
+        variables: { name: "Buck" },
       },
-      result: { data: deleteDog }
-    }
+      result: { data: { deleteDog: { name: "Buck", breed: "Poodle", id: 1 } } },
+    },
   ];
 
   render(

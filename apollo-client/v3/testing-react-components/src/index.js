@@ -8,7 +8,7 @@ import { link } from "./schema";
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link
+  link,
 });
 
 function App() {
