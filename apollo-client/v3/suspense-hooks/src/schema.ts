@@ -6,7 +6,8 @@ import {
   GraphQLID,
   GraphQLString,
   GraphQLList,
-  GraphQLError,
+  // Uncomment to test error handling
+  // GraphQLError,
 } from "graphql";
 import { ApolloLink, Observable } from "@apollo/client";
 
@@ -73,34 +74,15 @@ const QueryType = new GraphQLObjectType({
           (dog) => dog.id.toLowerCase() === id.toLowerCase()
         );
         if (!id || !findDogByName) return dogData[0];
+        // Uncomment to test error handling
+        // return new GraphQLError("Error! Something went wrong.");
         return findDogByName;
       },
-      // resolve: () => {
-      //   return new GraphQLError("Error! Something went wrong.");
-      // },
     },
   },
 });
 
-const MutationType = new GraphQLObjectType({
-  name: "Mutation",
-  fields: {
-    deleteDog: {
-      type: DogType,
-      args: {
-        name: { type: GraphQLString },
-      },
-      resolve: function (_, { name }) {
-        const result = dogData.filter(
-          (dog) => dog.name.toLowerCase() !== name.toLowerCase()
-        );
-        return (dogData = result);
-      },
-    },
-  },
-});
-
-const schema = new GraphQLSchema({ query: QueryType, mutation: MutationType });
+const schema = new GraphQLSchema({ query: QueryType });
 
 function delay(wait: number) {
   return new Promise((resolve) => setTimeout(resolve, wait));

@@ -5,7 +5,6 @@ import {
   useSuspenseQuery,
   useApolloClient,
 } from "@apollo/client";
-import "./App.css";
 
 interface Data {
   dog: {

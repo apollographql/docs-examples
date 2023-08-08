@@ -1,16 +1,12 @@
-import React, { Suspense } from "react";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-import "./index.css";
 import { link } from "./schema";
+import { Layout } from "./layout";
+import { routes } from "./routes";
 
-// Pages
-// import App from "./useSuspenseQuery";
-// import App from "./useSuspenseQuery-changing-variables";
-// import App from "./useSuspenseQuery-partialData";
-// import App from "./useBackgroundQuery";
-// import App from "./useSuspsenseQuery-error-handling";
-import App from "./refetch-fetchMore";
+import "./index.css";
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -20,12 +16,19 @@ const client = new ApolloClient({
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      {/* <Suspense fallback={<div>Loading...</div>}> */}
-      <App />
-      {/* </Suspense> */}
+      <Router>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            {routes.map(({ path, Element }) => (
+              <Route key={path} path={path} element={<Element />} />
+            ))}
+          </Route>
+        </Routes>
+      </Router>
     </ApolloProvider>
   </React.StrictMode>
 );

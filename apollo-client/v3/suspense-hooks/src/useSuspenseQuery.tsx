@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 import { gql, TypedDocumentNode, useSuspenseQuery } from "@apollo/client";
-import "./App.css";
 
 interface Data {
   dog: {

@@ -7,7 +7,6 @@ import {
   QueryReference,
   useReadQuery,
 } from "@apollo/client";
-import "./App.css";
 
 interface DogData {
   dog: {

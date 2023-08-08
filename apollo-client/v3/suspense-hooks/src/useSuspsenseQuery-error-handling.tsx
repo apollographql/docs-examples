@@ -1,7 +1,6 @@
 import { useState, Suspense, startTransition } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { gql, TypedDocumentNode, useSuspenseQuery } from "@apollo/client";
-import "./App.css";
 
 interface DogsData {
   dogs: {
@@ -67,6 +66,10 @@ function App() {
           </option>
         ))}
       </select>
+      {/* If you want to activate this error boundary, uncomment the
+      GraphQLError import on L10 and L78 inside the `dog` resolver
+      in order to throw a GraphQL error which will be thrown by the Dog 
+      component below, activating the ErrorBoundary on the next line */}
       <ErrorBoundary FallbackComponent={() => <div>Something went wrong</div>}>
         <Suspense fallback={<div>Loading...</div>}>
           <Dog id={selectedDog} />
