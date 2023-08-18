@@ -1,0 +1,29 @@
+{
+  "name": "mern-server-graphql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/server.js",
+  "scripts": {
+    "postinstall": "npm run compile",
+    "compile": "tsc",
+    "start": "npm run compile && node ./dist/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@apollo/server": "^4.7.5",
+    "@apollo/subgraph": "^2.4.8",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "graphql": "^16.7.1",
+    "graphql-tag": "^2.12.6",
+    "mongodb": "^5.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.3.3",
+    "typescript": "^5.1.6"
+  }
+}
