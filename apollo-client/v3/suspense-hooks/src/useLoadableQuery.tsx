@@ -1,5 +1,12 @@
-import { useState, Suspense } from "react";
-import { gql, TypedDocumentNode, useSuspenseQuery } from "@apollo/client";
+import { Suspense } from "react";
+import {
+  gql,
+  QueryReference,
+  TypedDocumentNode,
+  useLoadableQuery,
+  useReadQuery,
+  useSuspenseQuery,
+} from "@apollo/client";
 
 interface DogsData {
   dogs: {
@@ -17,10 +24,6 @@ interface DogData {
 }
 
 interface Variables {
-  id: string;
-}
-
-interface DogProps {
   id: string;
 }
 
@@ -49,35 +52,30 @@ export const GET_DOGS_QUERY: TypedDocumentNode<DogsData, Variables> = gql`
 
 function App() {
   const { data } = useSuspenseQuery(GET_DOGS_QUERY);
-  const [selectedDog, setSelectedDog] = useState(data.dogs[0].name);
+  const [loadDog, queryRef] = useLoadableQuery(GET_DOG_QUERY);
 
   return (
     <>
-      <select
-        onChange={(e) => {
-          // uncomment startTransition to avoid suspending on selection change
-          // startTransition(() => {
-          setSelectedDog(e.target.value);
-          // });
-        }}
-      >
-        {data.dogs.map((dog) => (
-          <option key={dog.id} value={dog.id}>
-            {dog.name}
+      <select onChange={(e) => loadDog({ id: e.target.value })}>
+        {data.dogs.map(({ id, name }) => (
+          <option key={id} value={id}>
+            {name}
           </option>
         ))}
       </select>
       <Suspense fallback={<div>Loading...</div>}>
-        <Dog id={selectedDog} />
+        {queryRef && <Dog queryRef={queryRef} />}
       </Suspense>
     </>
   );
 }
 
-function Dog({ id }: DogProps) {
-  const { data } = useSuspenseQuery(GET_DOG_QUERY, {
-    variables: { id },
-  });
+interface DogProps {
+  queryRef: QueryReference<DogData>;
+}
+
+function Dog({ queryRef }: DogProps) {
+  const { data } = useReadQuery(queryRef);
 
   return (
     <>

@@ -2,9 +2,9 @@
 import UseSuspenseQuery from "./useSuspenseQuery";
 import UseSuspenseQueryChangingVariables from "./useSuspenseQuery-changing-variables";
 import UseSuspenseQueryPartialData from "./useSuspenseQuery-partialData";
-import UseSuspenseQueryErrorHandling from "./useSuspsenseQuery-error-handling";
 import UseBackgroundQuery from "./useBackgroundQuery";
 import Refetch from "./refetch-fetchMore";
+import useLoadableQuery from "./useLoadableQuery";
 
 export const routes = [
   {
@@ -23,11 +23,6 @@ export const routes = [
     Element: UseSuspenseQueryPartialData,
   },
   {
-    path: "useSuspenseQuery-error-handling",
-    title: "<code>useSuspenseQuery</code>: error handling",
-    Element: UseSuspenseQueryErrorHandling,
-  },
-  {
     path: "useBackgroundQuery-useReadQuery",
     title:
       "Fetching with <code>useBackgroundQuery</code> and rendering with <code>useReadQuery</code>",
@@ -38,5 +33,11 @@ export const routes = [
     title:
       "Refetching with <code>useSuspenseQuery</code> and <code>useBackgroundQuery</code>",
     Element: Refetch,
+  },
+  {
+    path: "useLoadableQuery",
+    title:
+      "Fetching data on user interaction with <code>useLoadableQuery</code>",
+    Element: useLoadableQuery,
   },
 ];
