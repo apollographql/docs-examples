@@ -27,7 +27,6 @@ interface Variables {
 interface DogProps {
   id: string;
   queryRef: QueryReference<BreedData>;
-  // dogQueryRef: QueryReference<DogData>;
 }
 
 interface BreedsProps {
