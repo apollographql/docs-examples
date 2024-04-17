@@ -4,12 +4,20 @@ const config: Config = {
   globals: {
     "globalThis.__DEV__": JSON.stringify(true),
   },
-  testEnvironment: "jsdom",
+  testEnvironment: require.resolve("./FixJSDOMEnvironment.cjs"),
   setupFilesAfterEnv: ["<rootDir>/setupTests.ts"],
   transform: {
     "\\.(gql|graphql)$": "@graphql-tools/jest-transform",
-    ".*": "babel-jest",
+    "^.+\\.tsx?$": [
+      "ts-jest",
+      {
+        diagnostics: {
+          warnOnly: process.env.TEST_ENV !== "ci",
+        },
+      },
+    ],
   },
+  resolver: "ts-jest-resolver",
 };
 
 export default config;
