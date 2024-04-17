@@ -3,11 +3,16 @@ import {
   createTestSchema,
 } from "@apollo/client/testing/experimental";
 import { makeExecutableSchema } from "@graphql-tools/schema";
-import { render, screen } from "@testing-library/react";
+import { render as rtlRender, screen } from "@testing-library/react";
 import graphqlSchema from "../../../schema.graphql";
 import { makeClient } from "../../client";
-import { ApolloProvider } from "@apollo/client";
+import {
+  ApolloClient,
+  ApolloProvider,
+  NormalizedCacheObject,
+} from "@apollo/client";
 import { Products } from "../../products";
+import { Suspense } from "react";
 
 const staticSchema = makeExecutableSchema({ typeDefs: graphqlSchema });
 
@@ -28,20 +33,22 @@ const schema = createTestSchema(staticSchema, {
   },
 });
 
+const render = (renderedClient: ApolloClient<NormalizedCacheObject>) =>
+  rtlRender(
+    <ApolloProvider client={renderedClient}>
+      <Suspense fallback="Loading...">
+        <Products />
+      </Suspense>
+    </ApolloProvider>
+  );
+
 describe("Products", () => {
   it("renders", async () => {
-    const forkedSchema = schema.fork();
+    using _fetch = createSchemaFetch(schema).mockGlobal();
 
-    // Symbol.dispose is not defined
-    // jest bug: https://github.com/jestjs/jest/issues/14874
-    // fix is available in https://github.com/jestjs/jest/releases/tag/v30.0.0-alpha.3
-    using _fetch = createSchemaFetch(forkedSchema).mockGlobal();
+    render(makeClient());
 
-    render(
-      <ApolloProvider client={makeClient()}>
-        <Products />
-      </ApolloProvider>
-    );
+    await screen.findByText("Loading...");
 
     // title is rendering the default string scalar
     const findAllByText = await screen.findAllByText("default string");

@@ -35,6 +35,9 @@ Object.defineProperties(globalThis, {
   Response: { value: Response }, // jest
 });
 
+// Symbol.dispose is not defined
+// jest bug: https://github.com/jestjs/jest/issues/14874
+// fix is available in https://github.com/jestjs/jest/releases/tag/v30.0.0-alpha.3
 if (!Symbol.dispose) {
   Object.defineProperty(Symbol, "dispose", {
     value: Symbol("dispose"),

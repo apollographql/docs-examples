@@ -1,4 +1,4 @@
-import { gql, TypedDocumentNode, useQuery } from "@apollo/client";
+import { gql, TypedDocumentNode, useSuspenseQuery } from "@apollo/client";
 import { ProductsQuery } from "./__generated__/api";
 
 const QUERY: TypedDocumentNode<ProductsQuery> = gql`
@@ -12,11 +12,10 @@ const QUERY: TypedDocumentNode<ProductsQuery> = gql`
 `;
 
 export function Products() {
-  const { loading, error, data } = useQuery(QUERY);
+  const { error, data } = useSuspenseQuery(QUERY);
 
   return (
     <div>
-      {loading ? <p>Loading...</p> : ""}
       {error ? <p>Error :(</p> : ""}
       {data?.products?.map((product) => {
         if (!product) return null;

@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { render as rtlRender, screen } from "@testing-library/react";
 import {
   ApolloClient,
@@ -22,13 +23,17 @@ afterEach(() => server.resetHandlers());
 const render = (renderedClient: ApolloClient<NormalizedCacheObject>) =>
   rtlRender(
     <ApolloProvider client={renderedClient}>
-      <Products />
+      <Suspense fallback="Loading...">
+        <Products />
+      </Suspense>
     </ApolloProvider>
   );
 
 describe("Products", () => {
   test("renders", async () => {
     render(makeClient());
+
+    await screen.findByText("Loading...");
 
     expect(await screen.findByText(/blue jays hat/i)).toBeInTheDocument();
   });
@@ -50,6 +55,8 @@ describe("Products", () => {
     });
 
     render(makeClient());
+
+    await screen.findByText("Loading...");
 
     // the resolver has been updated
     await screen.findByText(/mets hat/i);
@@ -75,6 +82,8 @@ describe("Products", () => {
 
     render(makeClient());
 
+    await screen.findByText("Loading...");
+
     // the resolver has been updated
     await screen.findByText(/yankees hat/i);
   });
@@ -83,6 +92,8 @@ describe("Products", () => {
     schemaProxy.reset();
 
     render(makeClient());
+
+    await screen.findByText("Loading...");
 
     await screen.findByText(/blue jays hat/i);
   });
