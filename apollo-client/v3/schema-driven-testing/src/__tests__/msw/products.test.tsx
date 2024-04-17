@@ -4,7 +4,7 @@ import {
   ApolloProvider,
   NormalizedCacheObject,
 } from "@apollo/client";
-import { Main } from "../../main";
+import { Products } from "../../products";
 import { server } from "../mocks/server";
 import { makeClient } from "../../client";
 import { schemaProxy } from "../mocks/handlers";
@@ -22,12 +22,12 @@ afterEach(() => server.resetHandlers());
 const render = (renderedClient: ApolloClient<NormalizedCacheObject>) =>
   rtlRender(
     <ApolloProvider client={renderedClient}>
-      <Main />
+      <Products />
     </ApolloProvider>
   );
 
-describe("Main", () => {
-  test("renders product from test schema", async () => {
+describe("Products", () => {
+  test("renders", async () => {
     render(makeClient());
 
     expect(await screen.findByText(/blue jays hat/i)).toBeInTheDocument();

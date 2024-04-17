@@ -15,9 +15,9 @@ const { clearImmediate } = require("node:timers");
 const { performance } = require("node:perf_hooks");
 
 Object.defineProperties(globalThis, {
-  TextDecoder: { value: TextDecoder },
-  TextEncoder: { value: TextEncoder },
-  ReadableStream: { value: ReadableStream },
+  TextDecoder: { value: TextDecoder }, // jest
+  TextEncoder: { value: TextEncoder }, // jest
+  ReadableStream: { value: ReadableStream }, // jest
   performance: { value: performance },
   clearImmediate: { value: clearImmediate },
 });
@@ -26,13 +26,13 @@ const { Blob, File } = require("node:buffer");
 const { fetch, Headers, FormData, Request, Response } = require("undici");
 
 Object.defineProperties(globalThis, {
-  fetch: { value: fetch, writable: true },
+  fetch: { value: fetch, writable: true }, // jest
   Blob: { value: Blob },
   File: { value: File },
   Headers: { value: Headers },
   FormData: { value: FormData },
   Request: { value: Request },
-  Response: { value: Response },
+  Response: { value: Response }, // jest
 });
 
 if (!Symbol.dispose) {

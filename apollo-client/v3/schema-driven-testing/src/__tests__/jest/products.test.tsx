@@ -7,7 +7,7 @@ import { render, screen } from "@testing-library/react";
 import graphqlSchema from "../../../schema.graphql";
 import { makeClient } from "../../client";
 import { ApolloProvider } from "@apollo/client";
-import { Main } from "../../main";
+import { Products } from "../../products";
 
 const staticSchema = makeExecutableSchema({ typeDefs: graphqlSchema });
 
@@ -28,8 +28,8 @@ const schema = createTestSchema(staticSchema, {
   },
 });
 
-describe("Main", () => {
-  it("renders products", async () => {
+describe("Products", () => {
+  it("renders", async () => {
     const forkedSchema = schema.fork();
 
     // Symbol.dispose is not defined
@@ -39,7 +39,7 @@ describe("Main", () => {
 
     render(
       <ApolloProvider client={makeClient()}>
-        <Main />
+        <Products />
       </ApolloProvider>
     );
 

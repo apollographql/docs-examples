@@ -19,7 +19,7 @@ const QUERY: TypedDocumentNode<TestQuery> = gql`
   }
 `;
 
-export default function NonDeferredQuery() {
+export function Products() {
   const { loading, error, data } = useQuery(QUERY);
 
   return (
