@@ -7,7 +7,7 @@ import graphqlSchema from "../../../schema.graphql";
 
 const staticSchema = makeExecutableSchema({ typeDefs: graphqlSchema });
 
-export const schemaProxy = createTestSchema(staticSchema, {
+export let schemaProxy = createTestSchema(staticSchema, {
   resolvers: {
     Query: {
       products: () => [
@@ -24,6 +24,21 @@ export const schemaProxy = createTestSchema(staticSchema, {
     String: () => "string",
   },
 });
+
+export function replaceSchema(newSchema: typeof schemaProxy) {
+  const oldSchema = schemaProxy;
+  schemaProxy = newSchema;
+
+  function restore() {
+    schemaProxy = oldSchema;
+  }
+
+  return Object.assign(restore, {
+    [Symbol.dispose]() {
+      restore();
+    },
+  });
+}
 
 export const handlers = [
   graphql.operation(async ({ query, variables, operationName }) => {

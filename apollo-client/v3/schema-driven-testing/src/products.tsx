@@ -1,20 +1,12 @@
 import { gql, TypedDocumentNode, useQuery } from "@apollo/client";
-import { TestQuery } from "./__generated__/api";
+import { ProductsQuery } from "./__generated__/api";
 
-const QUERY: TypedDocumentNode<TestQuery> = gql`
-  query TestQuery {
+const QUERY: TypedDocumentNode<ProductsQuery> = gql`
+  query ProductsQuery {
     products {
-      ...DimensionsAndVariation
       id
-    }
-  }
-  fragment DimensionsAndVariation on Product {
-    mediaUrl
-    weight
-    title
-    price {
-      amount
-      currency
+      title
+      mediaUrl
     }
   }
 `;
