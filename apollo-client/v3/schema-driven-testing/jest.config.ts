@@ -4,8 +4,14 @@ const config: Config = {
   globals: {
     "globalThis.__DEV__": JSON.stringify(true),
   },
-  testEnvironment: require.resolve("./FixJSDOMEnvironment.cjs"),
+  testEnvironment: "jsdom",
+  setupFiles: ["./jest.polyfills.js"],
   setupFilesAfterEnv: ["<rootDir>/setupTests.ts"],
+  // Opt out of the browser export condition for MSW tests
+  // for more information, see: https://github.com/mswjs/msw/issues/1786#issuecomment-1782559851
+  testEnvironmentOptions: {
+    customExportConditions: [""],
+  },
   transform: {
     "\\.(gql|graphql)$": "@graphql-tools/jest-transform",
     "^.+\\.tsx?$": [

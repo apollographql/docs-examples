@@ -5,7 +5,7 @@ import {
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import { render, screen } from "@testing-library/react";
 import graphqlSchema from "../../../schema.graphql";
-import { client } from "../../client";
+import { makeClient } from "../../client";
 import { ApolloProvider } from "@apollo/client";
 import { Main } from "../../main";
 
@@ -38,7 +38,7 @@ describe("Main", () => {
     using _fetch = createSchemaFetch(forkedSchema).mockGlobal();
 
     render(
-      <ApolloProvider client={client}>
+      <ApolloProvider client={makeClient()}>
         <Main />
       </ApolloProvider>
     );

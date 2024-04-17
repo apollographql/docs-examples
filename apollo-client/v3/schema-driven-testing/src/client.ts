@@ -8,3 +8,10 @@ export const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: httpLink,
 });
+
+export const makeClient = () => {
+  return new ApolloClient({
+    cache: new InMemoryCache(),
+    link: httpLink,
+  });
+};
