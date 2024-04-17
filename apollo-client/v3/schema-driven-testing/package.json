@@ -19,10 +19,6 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-explicit-resource-management": "7.24.1",
-    "@babel/preset-env": "7.24.4",
-    "@babel/preset-react": "7.24.1",
-    "@babel/preset-typescript": "7.24.1",
     "@graphql-codegen/cli": "5.0.2",
     "@graphql-codegen/typescript": "4.0.6",
     "@graphql-codegen/typescript-operations": "4.2.0",
