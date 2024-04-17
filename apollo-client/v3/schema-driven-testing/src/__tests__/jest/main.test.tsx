@@ -8,39 +8,34 @@ import graphqlSchema from "../../../schema.graphql";
 import { client } from "../../client";
 import { ApolloProvider } from "@apollo/client";
 import { Main } from "../../main";
-// import { Resolvers } from "../../__generated__/resolvers-types";
 
 const staticSchema = makeExecutableSchema({ typeDefs: graphqlSchema });
 
 const schema = createTestSchema(staticSchema, {
   resolvers: {
     Query: {
-      products: () => [
-        {
-          id: "1",
-          mediaUrl: "https://example.com/image.jpg",
-        },
-        {
-          id: "2",
-          mediaUrl: "https://example.com/image2.jpg",
-        },
-      ],
+      products: () =>
+        new Array(5).fill(null).map((_, i) => ({
+          id: i,
+          mediaUrl: `https://example.com/image${i}.jpg`,
+        })),
     },
   },
   scalars: {
     Int: () => 6,
     Float: () => 22.1,
-    String: () => "string",
+    String: () => "default string",
   },
 });
 
 describe("Main", () => {
-  it("should work", async () => {
+  it("renders products", async () => {
     const forkedSchema = schema.fork();
 
     // Symbol.dispose is not defined
-    // using _fetch = createSchemaFetch(forkedSchema).mockGlobal();
-    const { restore } = createSchemaFetch(forkedSchema).mockGlobal();
+    // jest bug: https://github.com/jestjs/jest/issues/14874
+    // fix is available in https://github.com/jestjs/jest/releases/tag/v30.0.0-alpha.3
+    using _fetch = createSchemaFetch(forkedSchema).mockGlobal();
 
     render(
       <ApolloProvider client={client}>
@@ -48,9 +43,15 @@ describe("Main", () => {
       </ApolloProvider>
     );
 
-    await screen.findByText("1 - https://example.com/image.jpg");
-    await screen.findByText("2 - https://example.com/image2.jpg");
+    // title is rendering the default string scalar
+    const findAllByText = await screen.findAllByText("default string");
+    expect(findAllByText).toHaveLength(5);
 
-    restore();
+    // the products resolver is returning 5 products
+    await screen.findByText("0 - https://example.com/image0.jpg");
+    await screen.findByText("1 - https://example.com/image1.jpg");
+    await screen.findByText("2 - https://example.com/image2.jpg");
+    await screen.findByText("3 - https://example.com/image3.jpg");
+    await screen.findByText("4 - https://example.com/image4.jpg");
   });
 });

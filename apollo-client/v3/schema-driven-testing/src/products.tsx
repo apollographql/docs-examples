@@ -30,6 +30,7 @@ export default function NonDeferredQuery() {
         if (!product) return null;
         return (
           <div key={product.id}>
+            <p>{product.title}</p>
             <b>
               {product.id} - {product.mediaUrl}
             </b>
