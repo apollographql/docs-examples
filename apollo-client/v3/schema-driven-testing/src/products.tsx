@@ -12,20 +12,18 @@ const QUERY: TypedDocumentNode<ProductsQuery> = gql`
 `;
 
 export function Products() {
-  const { error, data } = useSuspenseQuery(QUERY);
+  const { data } = useSuspenseQuery(QUERY);
 
   return (
     <div>
-      {error ? <p>Error :(</p> : ""}
-      {data?.products?.map((product) => {
+      {data.products?.map((product) => {
         if (!product) return null;
         return (
-          <div key={product.id}>
-            <p>{product.title}</p>
-            <b>
-              {product.id} - {product.mediaUrl}
-            </b>
-          </div>
+          <p key={product.id}>
+            <a href={product.mediaUrl || ""}>
+              {product.title} - {product.id}
+            </a>
+          </p>
         );
       })}
     </div>

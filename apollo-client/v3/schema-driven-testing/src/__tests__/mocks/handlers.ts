@@ -1,5 +1,7 @@
 import { graphql, HttpResponse } from "msw";
 import { execute } from "graphql";
+import type { ExecutionResult } from "graphql";
+import type { ObjMap } from "graphql/jsutils/ObjMap";
 import { gql } from "@apollo/client";
 import { createTestSchema } from "@apollo/client/testing/experimental";
 import { makeExecutableSchema } from "@graphql-tools/schema";
@@ -41,16 +43,18 @@ export function replaceSchema(newSchema: typeof schemaProxy) {
 }
 
 export const handlers = [
-  graphql.operation(async ({ query, variables, operationName }) => {
-    const document = gql(query);
+  graphql.operation<ExecutionResult<ObjMap<unknown>, ObjMap<unknown>>>(
+    async ({ query, variables, operationName }) => {
+      const document = gql(query);
 
-    const result = await execute({
-      document,
-      operationName,
-      schema: schemaProxy,
-      variableValues: variables,
-    });
+      const result = await execute({
+        document,
+        operationName,
+        schema: schemaProxy,
+        variableValues: variables,
+      });
 
-    return HttpResponse.json(result);
-  }),
+      return HttpResponse.json(result);
+    }
+  ),
 ];
