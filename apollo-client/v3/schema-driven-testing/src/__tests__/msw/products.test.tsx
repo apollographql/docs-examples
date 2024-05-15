@@ -8,7 +8,7 @@ import {
 import { Products } from "../../products";
 import { server } from "../mocks/server";
 import { makeClient } from "../../client";
-import { replaceSchema, schemaProxy } from "../mocks/handlers";
+import { replaceSchema, testSchema } from "../mocks/handlers";
 
 // The following server set-up, reset and teardown would normally be
 // done in a `setupTests.ts` file. Since we're using Jest to run both
@@ -39,7 +39,7 @@ describe("Products", () => {
   });
 
   test("allows resolvers to be updated via .add", async () => {
-    schemaProxy.add({
+    testSchema.add({
       resolvers: {
         Query: {
           products: () => {
@@ -63,7 +63,7 @@ describe("Products", () => {
   });
 
   test("allows resolvers to be updated via .fork and replaceSchema", async () => {
-    const newSchema = schemaProxy.fork({
+    const newSchema = testSchema.fork({
       resolvers: {
         Query: {
           products: () => {
@@ -89,7 +89,7 @@ describe("Products", () => {
   });
 
   test("handles test schema resetting via .reset", async () => {
-    schemaProxy.reset();
+    testSchema.reset();
 
     render(makeClient());
 
