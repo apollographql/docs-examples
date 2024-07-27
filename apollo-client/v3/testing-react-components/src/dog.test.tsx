@@ -2,6 +2,8 @@ import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import { MockedProvider } from "@apollo/client/testing";
 import { GET_DOG_QUERY, Dog } from "./dog";
+import React from "react";
+import { expect, test } from 'vitest'
 
 const mocks = [
   {
@@ -19,7 +21,7 @@ const mocks = [
   },
 ];
 
-it("renders without error", async () => {
+test("renders without error", async () => {
   render(
     <MockedProvider mocks={mocks} addTypename={false}>
       <Dog name="Buck" />
@@ -28,7 +30,7 @@ it("renders without error", async () => {
   expect(await screen.findByText("Loading...")).toBeInTheDocument();
 });
 
-it("should render dog", async () => {
+test("should render dog", async () => {
   const dogMock = {
     request: {
       query: GET_DOG_QUERY,
@@ -47,7 +49,7 @@ it("should render dog", async () => {
   expect(await screen.findByText("Buck is a poodle")).toBeInTheDocument();
 });
 
-it("should show error UI", async () => {
+test("should show error UI", async () => {
   const dogMock = {
     request: {
       query: GET_DOG_QUERY,
