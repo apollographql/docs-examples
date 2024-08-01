@@ -3,7 +3,6 @@ import { render, screen } from "@testing-library/react";
 import { MockedProvider } from "@apollo/client/testing";
 import { GET_DOG_QUERY, Dog } from "./dog";
 import React from "react";
-import { expect, test } from 'vitest'
 
 const mocks = [
   {
