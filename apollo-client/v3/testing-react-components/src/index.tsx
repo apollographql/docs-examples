@@ -20,7 +20,7 @@ function App() {
   );
 }
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById("root") as HTMLElement;
 const root = createRoot(rootElement);
 
 root.render(

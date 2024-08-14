@@ -5,7 +5,7 @@ import { render, screen } from "@testing-library/react";
 import { MockedProvider } from "@apollo/client/testing";
 import { DeleteButton, DELETE_DOG_MUTATION } from "./delete-dog";
 
-it("should render without error", () => {
+test("should render without error", () => {
   render(
     <MockedProvider mocks={[]}>
       <DeleteButton />
@@ -13,7 +13,7 @@ it("should render without error", () => {
   );
 });
 
-it("should render loading and success states on delete", async () => {
+test("should render loading and success states on delete", async () => {
   const mocks = [
     {
       request: {

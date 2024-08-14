@@ -7,16 +7,18 @@
   "main": "src/index.js",
   "dependencies": {
     "@apollo/client": "3.7.17",
+    "@vitejs/plugin-react": "^4.3.1",
     "graphql": "16.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-scripts": "5.0.1"
+    "vite": "^5.3.4",
+    "vite-tsconfig-paths": "^4.3.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "vite",
+    "build": "vite build",
+    "test": "jest",
+    "eject": "vite eject"
   },
   "browserslist": {
     "production": [
@@ -29,5 +31,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.3",
+    "typescript": "^5.5.4"
   }
 }
