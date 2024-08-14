@@ -12,7 +12,11 @@ export const GET_DOG_QUERY = gql`
   }
 `;
 
-export function Dog({ name }: any) {
+interface DogProps {
+  name: string;
+}
+
+export function Dog({ name }: DogProps) {
   const { loading, error, data } = useQuery(GET_DOG_QUERY, {
     variables: { name },
   });

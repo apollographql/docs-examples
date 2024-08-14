@@ -3,11 +3,12 @@ module.exports = {
   testEnvironment: "jsdom",
   testEnvironmentOptions: {
     html: '<html lang="zh-cmn-Hant"></html>',
-    url: 'https://jestjs.io/',
-    userAgent: 'Agent/007',
+    url: "https://jestjs.io/",
+    userAgent: "Agent/007",
   },
   transform: {
-    "^.+.tsx?$": ["ts-jest",{}],
+    "^.+.tsx?$": ["ts-jest", {}],
   },
-  preset: "ts-jest"
+  preset: "ts-jest",
 };
+
