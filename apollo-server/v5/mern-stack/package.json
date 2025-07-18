@@ -1,0 +1,20 @@
+{
+  "name": "mern-stack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "npm run setup",
+    "setup": "concurrently \"npm:setup:*\"",
+    "setup:client": "npm install --prefix=client",
+    "setup:server": "npm install --prefix=server",
+    "start": "concurrently \"npm:start:*\"",
+    "start:client": "npm run start --prefix=client",
+    "start:server": "npm run start --prefix=server"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}

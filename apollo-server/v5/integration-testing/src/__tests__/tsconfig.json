@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "lib": ["es2020"],
+    "target": "es2020",
+    "module": "esnext",
+    "moduleResolution": "node",
+    // add jest to our types for testing
+    "types": ["node", "jest"],
+    "esModuleInterop": true
+  }
+}
