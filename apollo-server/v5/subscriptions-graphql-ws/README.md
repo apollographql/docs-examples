@@ -1,4 +1,4 @@
-# Subscriptions in Apollo Server v4
+# Subscriptions in Apollo Server v5
 
 This example demonstrates a basic subscription operation in Apollo Server. [See the docs on subscriptions](https://www.apollographql.com/docs/apollo-server/data/subscriptions/)
 
@@ -21,6 +21,6 @@ npm start
 
 ## Run in CodeSandbox
 
-<a href="https://codesandbox.io/s/github/apollographql/docs-examples/tree/main/apollo-server/v4/subscriptions-graphql-ws?fontsize=14&hidenavigation=1&initialpath=%2Fgraphql&theme=dark">
+<a href="https://codesandbox.io/s/github/apollographql/docs-examples/tree/main/apollo-server/v5/subscriptions-graphql-ws?fontsize=14&hidenavigation=1&initialpath=%2Fgraphql&theme=dark">
   <img alt="Edit" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>

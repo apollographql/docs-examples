@@ -1,6 +1,6 @@
-# Integration Testing in Apollo Server v4
+# Integration Testing in Apollo Server v5
 
-This example demonstrates the basics of testing Apollo Server. [See the docs on integration testing for more information](https://www.apollographql.com/docs/apollo-server/v4/testing/testing/).
+This example demonstrates the basics of testing Apollo Server. [See the docs on integration testing for more information](https://www.apollographql.com/docs/apollo-server/v5/testing/testing/).
 
 Check out the `src/__tests__/server.test.ts` file if you'd like to see how we are defining our test.
 
@@ -22,7 +22,7 @@ npm start
 
 ## Run in CodeSandbox
 
-<a href="https://codesandbox.io/s/github/apollographql/docs-examples/tree/main/apollo-server/v4/integration-testing?fontsize=14&hidenavigation=1&initialpath=%2Fgraphql&theme=dark">
+<a href="https://codesandbox.io/s/github/apollographql/docs-examples/tree/main/apollo-server/v5/integration-testing?fontsize=14&hidenavigation=1&initialpath=%2Fgraphql&theme=dark">
   <img alt="Edit" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
 
