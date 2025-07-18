@@ -1,0 +1,23 @@
+{
+  "name": "as5-getting-started",
+  "version": "1.0.0",
+  "description": "An example of getting started with Apollo Server 5",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "postinstall": "npm run compile",
+    "compile": "tsc",
+    "start": "npm run compile && node ./dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/server": "^5.0.0",
+    "graphql": "^16.11.0",
+    "typescript": "^5.8.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0"
+  }
+}

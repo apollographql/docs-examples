@@ -1,0 +1,31 @@
+{
+  "name": "as5-generating-types-example",
+  "version": "1.0.0",
+  "description": "An example of generating types from a schema to use in your resolvers.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "generate": "graphql-codegen --config codegen.yml",
+    "compile": "npm run generate && tsc",
+    "postinstall": "npm run compile",
+    "start": "npm run compile && node ./dist/index.js",
+    "watch": "concurrently  --names \"CodeGen,TS,Nodemon\" -c \"bgYellow,bgBlue,bgMagenta\" \"graphql-codegen --watch 'src/**/*.ts'\"  \"tsc -w \" \"nodemon ./dist/index.js \""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/server": "^5.0.0",
+    "graphql": "^16.11.0",
+    "graphql-tag": "^2.12.6",
+    "typescript": "^5.8.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/typescript": "^4.1.0",
+    "@graphql-codegen/typescript-resolvers": "^4.5.0",
+    "@types/node": "^20.19.0",
+    "concurrently": "^9.2.0",
+    "nodemon": "^3.1.0"
+  }
+}
