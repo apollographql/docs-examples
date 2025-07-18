@@ -3,7 +3,7 @@ import cors from "cors";
 import gql from "graphql-tag";
 import { ApolloServer } from "@apollo/server";
 import { buildSubgraphSchema } from "@apollo/subgraph";
-import { expressMiddleware } from "@apollo/server/express4";
+import { expressMiddleware } from "@as-integrations/express5";
 import resolvers from "./resolvers.js";
 import { readFileSync } from "fs";
 import { resolve, dirname } from "path";
