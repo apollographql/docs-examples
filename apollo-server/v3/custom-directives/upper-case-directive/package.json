@@ -9,7 +9,7 @@
   "dependencies": {
     "@graphql-tools/schema": "^8.1.1",
     "@graphql-tools/utils": "^8.1.1",
-    "apollo-server": "^3.4.1",
+    "@apollo/server": "^4.0.0",
     "graphql": "^15.5.1",
     "nodemon": "^2.0.12"
   }
